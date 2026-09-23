@@ -32,7 +32,7 @@ npm run preview   # testa a versão de produção
 4. **Contato**: título com letras cursivas, e-mail, e vários personagens subindo por baixo
 
 ## Publicar
-- **GitHub Pages**: já tem workflow em `.github/workflows/deploy.yml`. Em *Settings → Pages*, escolha *Source: GitHub Actions*. Cada push na `main` publica.
+- **GitHub Pages**: cada push na `main` roda o workflow `.github/workflows/deploy.yml`, que gera o site e publica na branch `gh-pages`. Endereço: https://henriquest-dev.github.io/claude/
 - **Vercel / Netlify**: build `npm run build`, pasta `dist`.
 
 ## Otimizações
