@@ -1,42 +1,51 @@
-# Portfólio — Henriquest
+# HAV Agency — site
 
-Site de portfólio com o personagem verde, animações de scroll no estilo Framer (scroll variants com spring) e cenas roteirizadas pelo scroll (pin + scrub).
+Site da HAV Agency com o mascote verde (slime), animações de scroll no estilo Framer (variantes com mola) e cenas controladas pela rolagem (pin + scrub). O conteúdo vem do portfólio antigo (havagency.space).
+
+**Online:** https://henriquest-dev.github.io/claude/
+
+## Estrutura da página
+1. **Intro**: 6 quadros do slime (a boca vai abrindo) → a boca engole a tela → frase + marquee
+2. **Íris**: um círculo abre no preto e revela a cena seguinte
+3. **Cena fixa**: título some → o cursor "pega" o slime → flash → post-its do processo → cards com vídeos (site, app, anúncio)
+4. **Serviços**: 6 serviços com widgets animados (barras, score 100/100, ROAS, funil)
+5. **Demonstração**: os 8 sites em vídeo, numa galeria horizontal controlada pela rolagem
+6. **Aplicativos**: 4 apps com vídeo e parallax
+7. **Anúncios**: 5 anúncios 9:16 em moldura de telemóvel, com botão de som
+8. **Projetos**: 6 projetos com filtros animados (GSAP Flip)
+9. **Sobre**: vídeo da equipa + contadores
+10. **Contacto**: canais diretos + formulário que abre o WhatsApp/email com a mensagem pronta, e os slimes subindo por baixo
 
 ## Tecnologias
-- **Vite + TypeScript**: build rápido, código tipado, bundle minificado
-- **GSAP + ScrollTrigger**: cenas fixas (pin) e animações ligadas ao scroll (scrub)
-- **Lenis**: scroll suave
-- **Fontsource**: fontes hospedadas no próprio site (só o subconjunto latino: Instrument Serif, Pinyon Script, Inter)
-- Personagem 100% em **SVG** (sem imagens pesadas), com mola própria (stiffness/damping/mass, igual ao Framer)
+Vite + TypeScript · GSAP (ScrollTrigger, Flip) · Lenis · fonte **Outfit** em todo o site (auto-hospedada, só latim) · personagem em SVG.
 
 ## Rodar
 ```bash
 npm install
-npm run dev       # desenvolvimento em http://localhost:5173
-npm run build     # gera a versão otimizada em dist/
-npm run preview   # testa a versão de produção
+npm run dev       # http://localhost:5173
+npm run build     # versão otimizada em dist/
 ```
 
-## Personalizar
-- **Nome, e-mail, redes, localização**: arquivo `.env` (depois rode `npm run build`)
-- **Textos**: `index.html` (todo o conteúdo está no HTML, bom para SEO)
-- **Cores**: variáveis `--green`, `--ink`, … no topo de `src/styles/main.css`
-- **Personagem / bocas**: `src/lib/blob.ts` (array `MOUTHS` = os 6 quadros)
-- **Mola das variantes**: `FRAMER_SPRING` em `src/lib/spring.ts`
-- **Sequência do scroll**: `src/sections/story.ts` (timeline com labels `about`, `process`, `work`, `exit`)
+## Editar
+| O quê | Onde |
+|---|---|
+| Nome, email, WhatsApp, Instagram | `.env` |
+| Textos das secções | `index.html` |
+| Sites da demonstração | `src/sections/demo.ts` + vídeos `public/media/site-XX.mp4` |
+| Anúncios | `src/sections/ads.ts` + `public/media/ad-XX.mp4` |
+| Projetos | `src/sections/projects.ts` |
+| Cores | topo de `src/styles/main.css` |
+| Personagem / bocas | `src/lib/blob.ts` |
+| Sequência da cena fixa | `src/sections/story.ts` |
 
-## Estrutura do scroll
-1. **Intro**: 6 quadros do personagem (a boca vai abrindo, com o fundo alternando preto/verde) → a boca engole a tela → texto + marquee de ferramentas
-2. **Íris**: um círculo abre no preto e revela a história
-3. **História (fixa na tela)**: título some com blur → cursor de design "pega" o personagem → flash → novo título → post-its entram e saem → cards de projetos entram pelos lados → tudo sai
-4. **Contato**: título com letras cursivas, e-mail, e vários personagens subindo por baixo
+**Trocar um vídeo:** coloque o `.mp4` em `public/media/` com o mesmo nome (ex.: `site-03.mp4`) e uma imagem `.webp` do primeiro frame com o mesmo nome.
 
 ## Publicar
-- **GitHub Pages**: cada push na `main` roda o workflow `.github/workflows/deploy.yml`, que gera o site e publica na branch `gh-pages`. Endereço: https://henriquest-dev.github.io/claude/
-- **Vercel / Netlify**: build `npm run build`, pasta `dist`.
+Cada push na `main` roda `.github/workflows/deploy.yml`, que gera o site e publica na branch `gh-pages` (GitHub Pages).
 
 ## Otimizações
-- JS ~55 kB gzip, CSS ~5 kB gzip, fontes só em latim (woff2)
-- Nenhuma imagem no site além do ícone e da imagem de compartilhamento
-- Respeita *reduzir movimento* do sistema (desliga o scroll suave e a mola)
-- Metatags de SEO e Open Graph, favicon SVG, `robots.txt`
+- Vídeos comprimidos (48 MB → 14,6 MB) e carregados só quando aparecem na tela; pausam ao sair
+- Imagem de pré-visualização (webp) em cada vídeo
+- JS ~68 kB gzip, uma única fonte (woff2, subset latino)
+- Respeita "reduzir movimento" (sem scroll suave, sem autoplay)
+- SEO e Open Graph, favicon, `robots.txt`
