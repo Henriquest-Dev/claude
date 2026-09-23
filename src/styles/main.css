@@ -116,11 +116,20 @@ body[data-theme="dark"] .nav { color: #fff; }
 body.is-scrolled[data-theme="light"] .nav { background: linear-gradient(var(--green) 55%, rgba(90, 214, 76, 0)); }
 
 .nav__brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
+/* HAV snake logo — a mask filled with currentColor, so it follows the nav colour */
+.hav-logo {
+  display: block; flex-shrink: 0; height: 40px; aspect-ratio: 520 / 375; background: currentColor;
+  -webkit-mask: url("/hav-logo.png") center / contain no-repeat;
+  mask: url("/hav-logo.png") center / contain no-repeat;
+  transition: transform 0.5s var(--ease-out);
+}
+.nav__brand:hover .hav-logo { transform: rotate(-4deg) scale(1.05); }
+.hav-logo--lg { height: 56px; }
 .nav__logo { width: 36px; height: 36px; display: block; flex-shrink: 0; }
 .nav__logo svg { width: 100%; height: 100%; display: block; }
 .nav__name { display: flex; flex-direction: column; line-height: 0.9; }
 .nav__name b { font-size: 20px; font-weight: 800; letter-spacing: -0.04em; }
-.nav__name small { font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; }
+.nav__name small { align-self: flex-end; margin-bottom: 2px; font-size: 10px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; opacity: 0.7; }
 
 .nav__links { display: flex; gap: clamp(14px, 2vw, 28px); }
 .nav__links a, .nav__cta { font-size: 13px; font-weight: 500; text-decoration: none; }
