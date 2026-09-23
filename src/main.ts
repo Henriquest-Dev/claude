@@ -1,6 +1,7 @@
 import "./styles/fonts.css";
 import "./styles/main.css";
 
+import { applyTranslations, initLangSwitch, takeSavedScroll } from "./i18n";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -20,6 +21,10 @@ import { initNav } from "./sections/nav";
 gsap.registerPlugin(ScrollTrigger);
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- language first: every animation is built from the final text ---------- */
+applyTranslations();
+initLangSwitch();
 
 /* ---------- static characters (logos) ---------- */
 document.querySelectorAll<HTMLElement>("[data-blob]").forEach((el) => {
@@ -55,5 +60,12 @@ followPointer(document, (x, y) => {
 
 initNav(lenis, { top: () => 0 });
 
-/* layout depends on the web font */
-document.fonts?.ready.then(() => ScrollTrigger.refresh());
+/* layout depends on the web font; then restore the position kept by the PT/EN switch */
+const saved = takeSavedScroll();
+document.fonts?.ready.then(() => {
+  ScrollTrigger.refresh();
+  if (saved !== null) {
+    window.scrollTo(0, saved);
+    lenis?.scrollTo(saved, { immediate: true });
+  }
+});

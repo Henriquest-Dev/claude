@@ -38,25 +38,14 @@ export function initNav(lenis: Lenis | null, extraTargets: Record<string, () => 
     });
   });
 
-  // Nav colour: dark sections vs green scenes
-  const zones: [string, "light" | "dark", string?][] = [
-    ["#story", "light", "top -100%"],
-    ["#servicos", "dark"],
-    ["#demonstracao", "dark"],
-    ["#aplicativos", "dark"],
-    ["#anuncios", "dark"],
-    ["#projetos", "dark"],
-    ["#sobre", "dark"],
-    ["#contacto", "light"],
-  ];
-  zones.forEach(([sel, theme, start]) =>
-    ScrollTrigger.create({
-      trigger: sel,
-      start: start ?? "top 40px",
-      end: "bottom 40px",
-      onToggle: (self) => self.isActive && setTheme(theme),
-    }),
-  );
+  // After the intro everything is green, so the nav stays dark-on-green
+  ScrollTrigger.create({
+    trigger: "#story",
+    start: "top -100%",
+    end: "max",
+    onToggle: (self) => self.isActive && setTheme("light"),
+  });
+  if (window.scrollY > window.innerHeight * 8) setTheme("light");
 
   const onScroll = () => document.body.classList.toggle("is-scrolled", window.scrollY > 40);
   window.addEventListener("scroll", onScroll, { passive: true });

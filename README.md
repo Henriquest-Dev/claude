@@ -8,13 +8,18 @@ Site da HAV Agency com o mascote verde (slime), animações de scroll no estilo 
 1. **Intro**: 6 quadros do slime (a boca vai abrindo) → a boca engole a tela → frase + marquee
 2. **Íris**: um círculo abre no preto e revela a cena seguinte
 3. **Cena fixa**: título some → o cursor "pega" o slime → flash → post-its do processo → cards com vídeos (site, app, anúncio)
-4. **Serviços**: 6 serviços com widgets animados (barras, score 100/100, ROAS, funil)
+4. **Serviços**: lista editorial; o serviço no meio do ecrã fica em foco
 5. **Demonstração**: os 8 sites em vídeo, numa galeria horizontal controlada pela rolagem
 6. **Aplicativos**: 4 apps com vídeo e parallax
 7. **Anúncios**: 5 anúncios 9:16 em moldura de telemóvel, com botão de som
-8. **Projetos**: 6 projetos com filtros animados (GSAP Flip)
+
+Tudo depois da cena fixa partilha o mesmo fundo verde, a mesma tipografia e as mesmas entradas (desfoque a subir), para a navegação ser uniforme.
+8. **Projetos**: lista editorial com filtros animados (GSAP Flip)
 9. **Sobre**: vídeo da equipa + contadores
 10. **Contacto**: canais diretos + formulário que abre o WhatsApp/email com a mensagem pronta, e os slimes subindo por baixo
+
+## Idiomas (PT/EN)
+O português está no `index.html`; o inglês fica em `src/i18n.ts` (mesmas chaves `data-i18n`). Textos gerados por script (sites, anúncios, projetos, mensagem do formulário) usam `tr(pt, en)` no próprio ficheiro. O botão PT/EN guarda a escolha e recarrega na mesma posição; visitantes com o navegador em inglês veem inglês por padrão. Link direto: `?lang=en` ou `?lang=pt`.
 
 ## Tecnologias
 Vite + TypeScript · GSAP (ScrollTrigger, Flip) · Lenis · fonte **Outfit** em todo o site (auto-hospedada, só latim) · personagem em SVG.
