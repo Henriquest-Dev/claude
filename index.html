@@ -3,57 +3,68 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>HAV Agency — Soluções Digitais &amp; Marketing</title>
-    <meta name="description" content="A HAV Agency cria websites, aplicativos, soluções digitais, publicidade de baixo custo e estratégias de marketing para negócios e empreendedores." />
-    <meta name="theme-color" content="#0b0b0b" />
+    <title data-i18n="meta.title">HAV Agency — Soluções Digitais &amp; Marketing</title>
+    <meta name="description" data-i18n-attr="content:meta.desc" content="A HAV Agency cria websites, aplicativos, soluções digitais, publicidade de baixo custo e estratégias de marketing para negócios e empreendedores." />
+    <meta name="theme-color" content="#5ad64c" />
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="alternate" hreflang="pt" href="https://henriquest-dev.github.io/claude/?lang=pt" />
+    <link rel="alternate" hreflang="en" href="https://henriquest-dev.github.io/claude/?lang=en" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="HAV Agency — Soluções Digitais &amp; Marketing" />
     <meta property="og:description" content="Websites, aplicativos, publicidade e marketing para negócios que querem crescer com tecnologia e estratégia." />
     <meta property="og:image" content="https://henriquest-dev.github.io/claude/og.png" />
     <meta property="og:url" content="https://henriquest-dev.github.io/claude/" />
     <meta name="twitter:card" content="summary_large_image" />
-    <script type="module" crossorigin src="./assets/index-DEow33mc.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/style-DOTgbgYi.css">
+    <script type="module" crossorigin src="./assets/index-yPoUCDd5.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style-BJzoZflw.css">
   </head>
   <body data-theme="dark">
-    <a class="skip" href="#contacto">Saltar para o contacto</a>
+    <a class="skip" href="#contacto" data-i18n="skip">Saltar para o contacto</a>
+    <div class="grain-overlay" aria-hidden="true"></div>
 
     <!-- ============================ NAV ============================ -->
     <header class="nav">
-      <a class="nav__brand" href="#inicio" data-scroll-to="top" aria-label="HAV Agency — início">
+      <a class="nav__brand" href="#inicio" data-scroll-to="top" aria-label="HAV Agency">
         <span class="nav__logo" data-blob="2"></span>
         <span class="nav__name"><b>HAV</b><small>agency</small></span>
       </a>
-      <nav class="nav__links" aria-label="Principal">
-        <a href="#inicio" data-scroll-to="top">Início</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#demonstracao">Demonstração</a>
-        <a href="#projetos">Projetos</a>
-        <a href="#sobre">Sobre nós</a>
-        <a href="#contacto">Contacto</a>
+      <nav class="nav__links" aria-label="Menu">
+        <a href="#inicio" data-scroll-to="top" data-i18n="nav.home">Início</a>
+        <a href="#servicos" data-i18n="nav.services">Serviços</a>
+        <a href="#demonstracao" data-i18n="nav.demo">Demonstração</a>
+        <a href="#projetos" data-i18n="nav.projects">Projetos</a>
+        <a href="#sobre" data-i18n="nav.about">Sobre nós</a>
+        <a href="#contacto" data-i18n="nav.contact">Contacto</a>
       </nav>
-      <a class="nav__cta" href="#contacto">Falar connosco</a>
-      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><i></i><i></i></button>
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="nav__cta" href="#contacto" data-i18n="nav.cta">Falar connosco</a>
+      <button class="nav__burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i></button>
     </header>
 
     <div class="menu" id="menu" hidden>
-      <p class="eyebrow">Navegação</p>
+      <p class="eyebrow" data-i18n="menu.label">Navegação</p>
       <nav aria-label="Menu">
-        <a href="#inicio" data-scroll-to="top"><span>Início</span><small>01</small></a>
-        <a href="#servicos"><span>Serviços</span><small>02</small></a>
-        <a href="#demonstracao"><span>Demonstração</span><small>03</small></a>
-        <a href="#projetos"><span>Projetos</span><small>04</small></a>
-        <a href="#sobre"><span>Sobre nós</span><small>05</small></a>
-        <a href="#contacto"><span>Contacto</span><small>06</small></a>
+        <a href="#inicio" data-scroll-to="top"><span data-i18n="nav.home">Início</span><small>01</small></a>
+        <a href="#servicos"><span data-i18n="nav.services">Serviços</span><small>02</small></a>
+        <a href="#demonstracao"><span data-i18n="nav.demo">Demonstração</span><small>03</small></a>
+        <a href="#projetos"><span data-i18n="nav.projects">Projetos</span><small>04</small></a>
+        <a href="#sobre"><span data-i18n="nav.about">Sobre nós</span><small>05</small></a>
+        <a href="#contacto"><span data-i18n="nav.contact">Contacto</span><small>06</small></a>
       </nav>
-      <a class="btn btn--green" href="#contacto">Falar connosco</a>
+      <div class="lang lang--menu" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">Português</button>
+        <button type="button" data-lang="en" aria-pressed="false">English</button>
+      </div>
+      <a class="btn" href="#contacto" data-i18n="nav.cta">Falar connosco</a>
     </div>
 
     <main id="inicio">
       <!-- ============ 1. INTRO — Framer-style scroll variants ============ -->
-      <section id="intro" class="intro" aria-label="Introdução">
+      <section id="intro" class="intro" aria-label="Intro">
         <div class="intro__stage">
           <div class="intro__blob" id="intro-blob"></div>
 
@@ -66,7 +77,7 @@
           </ol>
 
           <div class="intro__content">
-            <h1 class="intro__statement" data-words>
+            <h1 class="intro__statement" data-words data-i18n="intro.statement">
               A HAV Agency transforma ideias em
               <em class="c1">soluções digitais:</em>
               <em class="c2">websites,</em>
@@ -74,12 +85,12 @@
               <em class="c4">publicidade</em> &amp;
               <em class="c1">marketing.</em>
             </h1>
-            <div class="marquee" aria-label="O que fazemos">
+            <div class="marquee" aria-hidden="true">
               <div class="marquee__track">
-                <ul class="marquee__group">
+                <ul class="marquee__group" data-i18n="intro.marquee">
                   <li>Estratégia</li><li>Tecnologia</li><li>Criatividade</li><li>Websites</li><li>Aplicativos</li><li>Publicidade</li><li>Marketing</li><li>Consultoria</li>
                 </ul>
-                <ul class="marquee__group" aria-hidden="true">
+                <ul class="marquee__group" data-i18n="intro.marquee">
                   <li>Estratégia</li><li>Tecnologia</li><li>Criatividade</li><li>Websites</li><li>Aplicativos</li><li>Publicidade</li><li>Marketing</li><li>Consultoria</li>
                 </ul>
               </div>
@@ -89,19 +100,18 @@
       </section>
 
       <!-- ============ 2. STORY — scroll-scrubbed pinned scenes ============ -->
-      <section id="story" class="story" aria-label="Agência digital">
-        <div class="story__stage grain">
-          <!-- Scene 1 — hero -->
+      <section id="story" class="story" aria-label="HAV Agency">
+        <div class="story__stage">
           <div class="s1">
             <p class="s1__eyebrow eyebrow">HAV Agency · Digital solutions &amp; marketing</p>
-            <h2 class="s1__title title" data-words>
+            <h2 class="s1__title title" data-words data-i18n="s1.title">
               Transformamos <br />ideias em <br /><em class="hl">soluções</em> digitais.
             </h2>
-            <p class="s1__copy">Consultoria, websites, aplicativos, publicidade e marketing para negócios que querem crescer com tecnologia e estratégia.</p>
+            <p class="s1__copy" data-i18n="s1.copy">Consultoria, websites, aplicativos, publicidade e marketing para negócios que querem crescer com tecnologia e estratégia.</p>
 
             <aside class="s1__card glass">
-              <h3>Soluções estratégicas sob medida</h3>
-              <dl>
+              <h3 data-i18n="s1.cardTitle">Soluções estratégicas sob medida</h3>
+              <dl data-i18n="s1.cardList">
                 <div><dt>Consultoria</dt><dd>Diagnóstico</dd></div>
                 <div><dt>Websites</dt><dd>100/100</dd></div>
                 <div><dt>Aplicativos</dt><dd>iOS &amp; Android</dd></div>
@@ -109,18 +119,18 @@
                 <div><dt>Marketing</dt><dd>+180% alcance</dd></div>
                 <div><dt>Soluções digitais</dt><dd>Sob medida</dd></div>
               </dl>
-              <a class="btn btn--light" href="#servicos">Ver os nossos serviços</a>
-              <p class="s1__card-note">Estratégia • Tecnologia • Criatividade</p>
+              <a class="btn btn--light" href="#servicos" data-i18n="s1.cardBtn">Ver os nossos serviços</a>
+              <p class="s1__card-note" data-i18n="s1.cardNote">Estratégia • Tecnologia • Criatividade</p>
             </aside>
 
-            <a class="s1__cta btn" href="#contacto">Falar connosco <span aria-hidden="true">▸</span></a>
+            <a class="s1__cta btn" href="#contacto"><span data-i18n="nav.cta">Falar connosco</span> <span aria-hidden="true">▸</span></a>
           </div>
 
           <div class="hero-blob" aria-hidden="true">
             <div class="hero-blob__svg" id="story-blob"></div>
             <div class="selection">
               <i></i><i></i><i></i><i></i>
-              <span class="selection__label">HAV Mascote · 320 × 320</span>
+              <span class="selection__label" data-i18n="s1.selection">HAV Mascote · 320 × 320</span>
             </div>
           </div>
 
@@ -131,24 +141,23 @@
 
           <div class="flash" aria-hidden="true"></div>
 
-          <!-- Scene 2 — process & work -->
           <div class="s2">
-            <h2 class="s2__title title" data-words>
+            <h2 class="s2__title title" data-words data-i18n="s2.title">
               Acha que crescer online <br /><em class="hl">acontece</em> por acaso?
             </h2>
 
-            <ul class="notes" aria-label="Como trabalhamos">
-              <li class="note"><b>01 · Diagnóstico</b>Orientação estratégica para identificar oportunidades e definir o melhor caminho para o seu projeto.</li>
-              <li class="note"><b>02 · Design &amp; Web</b>Websites modernos, rápidos e responsivos, com SEO técnico e design editorial.</li>
-              <li class="note"><b>03 · Anúncios</b>Criativos de alta conversão com custo por clique reduzido para Instagram, Meta &amp; Google.</li>
-              <li class="note"><b>04 · Crescimento</b>Posicionamento, conteúdo e um funil de conversão focado no cliente.</li>
+            <ul class="notes">
+              <li class="note" data-i18n="s2.note1"><b>01 · Diagnóstico</b>Orientação estratégica para identificar oportunidades e definir o melhor caminho para o seu projeto.</li>
+              <li class="note" data-i18n="s2.note2"><b>02 · Design &amp; Web</b>Websites modernos, rápidos e responsivos, com SEO técnico e design editorial.</li>
+              <li class="note" data-i18n="s2.note3"><b>03 · Anúncios</b>Criativos de alta conversão com custo por clique reduzido para Instagram, Meta &amp; Google.</li>
+              <li class="note" data-i18n="s2.note4"><b>04 · Crescimento</b>Posicionamento, conteúdo e um funil de conversão focado no cliente.</li>
             </ul>
 
-            <p class="s2__label">Marcas fortes não crescem<br />da noite para o dia.</p>
+            <p class="s2__label" data-i18n="s2.label">Marcas fortes não crescem<br />da noite para o dia.</p>
 
             <article class="card card--main glass">
-              <div class="thumb thumb--video"><video data-src="./media/site-01.mp4" poster="./media/site-01.webp" muted loop playsinline preload="none"></video></div>
-              <div class="card__body">
+              <div class="thumb"><video data-src="./media/site-01.mp4" poster="./media/site-01.webp" muted loop playsinline preload="none"></video></div>
+              <div class="card__body" data-i18n="s2.cardMain">
                 <h3>Demonstração dos sites</h3>
                 <h4>Arquitetura moderna &amp; SEO técnico</h4>
                 <p>Design editorial e responsivo com carregamento instantâneo.</p>
@@ -157,279 +166,248 @@
                 <p class="card__hl">Websites · Web design · Performance</p>
               </div>
             </article>
-
             <article class="card card--side card--a glass">
-              <div class="thumb thumb--video"><video data-src="./media/app-02.mp4" poster="./media/app-02.webp" muted loop playsinline preload="none"></video></div>
-              <p>Aplicações para iOS &amp; Android</p>
+              <div class="thumb"><video data-src="./media/app-02.mp4" poster="./media/app-02.webp" muted loop playsinline preload="none"></video></div>
+              <p data-i18n="s2.cardA">Aplicações para iOS &amp; Android</p>
             </article>
             <article class="card card--side card--b glass">
-              <div class="thumb thumb--video"><video data-src="./media/ad-02.mp4" poster="./media/ad-02.webp" muted loop playsinline preload="none"></video></div>
-              <p>Anúncios 9:16 que convertem</p>
+              <div class="thumb"><video data-src="./media/ad-02.mp4" poster="./media/ad-02.webp" muted loop playsinline preload="none"></video></div>
+              <p data-i18n="s2.cardB">Anúncios 9:16 que convertem</p>
             </article>
 
-            <p class="s2__copy">Consultoria, websites, aplicativos, publicidade e marketing — tudo sob o mesmo teto.</p>
+            <p class="s2__copy" data-i18n="s2.copy">Consultoria, websites, aplicativos, publicidade e marketing — tudo sob o mesmo teto.</p>
           </div>
         </div>
       </section>
 
-      <!-- ============ 3. SERVIÇOS ============ -->
-      <section id="servicos" class="section services">
-        <header class="section__head">
-          <p class="eyebrow" data-reveal>O que fazemos</p>
-          <h2 class="section__title" data-reveal-words>Soluções estratégicas <em class="hl">sob medida.</em></h2>
-          <p class="section__lead" data-reveal>Estruturamos soluções digitais pensadas para entregar autoridade, eficiência e impacto real nas vendas.</p>
-        </header>
+      <!-- ============ 3+. THE GREEN WORLD — one continuous background ============ -->
+      <div class="world">
 
-        <div class="services__grid">
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">01</span><span class="svc__tag">Estratégia &amp; Diagnóstico</span></header>
-            <h3>Consultoria</h3>
-            <p>Orientação estratégica para transformar ideias, identificar oportunidades e definir o melhor caminho para o seu projeto.</p>
-            <div class="widget">
-              <div class="meter"><span>Diagnóstico inicial</span><b>Concluído</b><i style="--v: 1"></i></div>
-              <div class="meter"><span>Objetivos de negócio</span><b>75% alinhado</b><i style="--v: 0.75"></i></div>
-              <p class="widget__note">→ Definição de escopo &amp; viabilidade</p>
-            </div>
-            <ul class="checks"><li>Diagnóstico de ecossistema digital</li><li>Definição de roadmap tecnológico</li><li>Estruturação de modelo de negócio</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
+        <!-- SERVIÇOS -->
+        <section id="servicos" class="section">
+          <div class="services">
+            <header class="services__head">
+              <p class="eyebrow" data-reveal data-i18n="svc.eyebrow">O que fazemos</p>
+              <h2 class="title section__title" data-reveal-words data-i18n="svc.title">Soluções estratégicas <em class="hl">sob medida.</em></h2>
+              <p class="section__lead" data-reveal data-i18n="svc.lead">Estruturamos soluções digitais pensadas para entregar autoridade, eficiência e impacto real nas vendas.</p>
+            </header>
 
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">02</span><span class="svc__tag">Engenharia Web &amp; Design</span></header>
-            <h3>Websites</h3>
-            <p>Criamos websites modernos, rápidos, responsivos e profissionais para empresas, marcas, serviços e projetos.</p>
-            <div class="widget widget--browser">
-              <div class="browser-bar"><i></i><i></i><i></i><span>havagency.space</span></div>
-              <div class="score"><svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15.5" /><circle class="score__arc" cx="18" cy="18" r="15.5" /></svg><b data-count="100">100</b><span>Lighthouse Score<br /><small>100/100</small></span></div>
-            </div>
-            <ul class="checks"><li>Arquitetura moderna &amp; SEO técnico</li><li>Design editorial e responsivo</li><li>Alta performance e carregamento rápido</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">03</span><span class="svc__tag">Software &amp; Aplicações</span></header>
-            <h3>Aplicativos</h3>
-            <p>Desenvolvemos aplicações personalizadas para transformar processos, serviços e ideias em experiências digitais.</p>
-            <div class="widget widget--chips"><span>Mobile UI / UX</span><span>iOS &amp; Android Ready</span><span>60 FPS Fluidity</span></div>
-            <ul class="checks"><li>Web apps &amp; plataformas progressivas</li><li>Interfaces intuitivas com UX focada</li><li>Automação de processos empresariais</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">04</span><span class="svc__tag">Tráfego &amp; Anúncios Eficientes</span></header>
-            <h3>Publicidade de baixo custo</h3>
-            <p>Criamos anúncios e peças publicitárias eficientes para promover produtos e serviços sem exigir grandes investimentos.</p>
-            <div class="widget widget--bars">
-              <div class="bars" aria-hidden="true"><i style="--h:.3"></i><i style="--h:.45"></i><i style="--h:.4"></i><i style="--h:.62"></i><i style="--h:.7"></i><i style="--h:.95"></i></div>
-              <p><span>Performance de campanhas</span><b>ROAS 4.8x</b></p>
-            </div>
-            <ul class="checks"><li>Criativos de alta conversão</li><li>Estratégia de custo por clique reduzido</li><li>Formatos para Instagram, Meta &amp; Google</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">05</span><span class="svc__tag">Crescimento &amp; Posicionamento</span></header>
-            <h3>Marketing</h3>
-            <p>Estratégias digitais para aumentar a visibilidade, posicionar a sua marca e atrair clientes no ambiente online.</p>
-            <div class="widget widget--funnel">
-              <p><span>Funil de comunicação</span><b>+180% alcance</b></p>
-              <div class="funnel" aria-hidden="true"><i style="--w:1">Atrair</i><i style="--w:.78">Reter</i><i style="--w:.56">Converter</i></div>
-            </div>
-            <ul class="checks"><li>Posicionamento e branding digital</li><li>Gestão estratégica de campanhas</li><li>Funil de conversão focado no cliente</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
-
-          <article class="svc" data-reveal>
-            <header><span class="svc__num">06</span><span class="svc__tag">Sistemas Sob Medida</span></header>
-            <h3>Soluções digitais</h3>
-            <p>Soluções personalizadas que combinam tecnologia, criatividade e estratégia para necessidades específicas.</p>
-            <div class="widget widget--chips"><span>Automação</span><span>Dashboards</span><span>APIs</span><span>Escalabilidade</span></div>
-            <ul class="checks"><li>Integrações sob medida de ferramentas</li><li>Dashboards operacionais e relatórios</li><li>Digitalização de fluxos e rotinas</li></ul>
-            <a class="svc__more" href="#contacto">Saber mais <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
-      </section>
-
-      <!-- ============ 4. DEMONSTRAÇÃO — horizontal scroll gallery ============ -->
-      <section id="demonstracao" class="demo">
-        <div class="demo__pin">
-          <header class="demo__head">
-            <div>
-              <p class="eyebrow">Projetos em funcionamento</p>
-              <h2 class="section__title">Demonstração dos sites.</h2>
-            </div>
-            <p class="demo__count"><b data-demo-index>01</b> / 08</p>
-          </header>
-          <div class="demo__track" data-demo-track>
-            <!-- filled by JS from DEMOS (src/sections/demo.ts) -->
+            <ol class="svc-list">
+              <li class="svc" data-focus>
+                <span class="svc__num">01</span>
+                <div data-i18n="svc.1">
+                  <h3>Consultoria</h3>
+                  <p>Orientação estratégica para transformar ideias, identificar oportunidades e definir o melhor caminho para o seu projeto.</p>
+                  <small>Diagnóstico · Roadmap tecnológico · Modelo de negócio</small>
+                </div>
+              </li>
+              <li class="svc" data-focus>
+                <span class="svc__num">02</span>
+                <div data-i18n="svc.2">
+                  <h3>Websites</h3>
+                  <p>Websites modernos, rápidos, responsivos e profissionais para empresas, marcas, serviços e projetos.</p>
+                  <small>SEO técnico · Design editorial · Alta performance</small>
+                </div>
+              </li>
+              <li class="svc" data-focus>
+                <span class="svc__num">03</span>
+                <div data-i18n="svc.3">
+                  <h3>Aplicativos</h3>
+                  <p>Aplicações personalizadas que transformam processos, serviços e ideias em experiências digitais.</p>
+                  <small>iOS &amp; Android · Web apps · Automação</small>
+                </div>
+              </li>
+              <li class="svc" data-focus>
+                <span class="svc__num">04</span>
+                <div data-i18n="svc.4">
+                  <h3>Publicidade</h3>
+                  <p>Anúncios e peças publicitárias eficientes para promover produtos e serviços sem grandes investimentos.</p>
+                  <small>Criativos de alta conversão · Instagram, Meta &amp; Google</small>
+                </div>
+              </li>
+              <li class="svc" data-focus>
+                <span class="svc__num">05</span>
+                <div data-i18n="svc.5">
+                  <h3>Marketing</h3>
+                  <p>Estratégias digitais para aumentar a visibilidade, posicionar a sua marca e atrair clientes online.</p>
+                  <small>Branding digital · Campanhas · Funil de conversão</small>
+                </div>
+              </li>
+              <li class="svc" data-focus>
+                <span class="svc__num">06</span>
+                <div data-i18n="svc.6">
+                  <h3>Soluções digitais</h3>
+                  <p>Soluções personalizadas que combinam tecnologia, criatividade e estratégia para necessidades específicas.</p>
+                  <small>Integrações · Dashboards · Digitalização de rotinas</small>
+                </div>
+              </li>
+            </ol>
           </div>
-          <div class="demo__progress" aria-hidden="true"><i data-demo-progress></i></div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ============ 5. APLICATIVOS ============ -->
-      <section id="aplicativos" class="section apps">
-        <header class="section__head">
-          <p class="eyebrow" data-reveal>Aplicações móveis</p>
-          <h2 class="section__title" data-reveal-words>Projetos para <em class="hl">iOS e Android.</em></h2>
-          <p class="section__lead" data-reveal>Aplicações nativas desenhadas para velocidade, retenção de utilizadores e usabilidade intuitiva em dispositivos móveis.</p>
-        </header>
-
-        <div class="apps__list">
-          <article class="app">
-            <div class="app__media" data-parallax><video data-src="./media/app-01.mp4" poster="./media/app-01.webp" muted loop playsinline preload="none"></video></div>
-            <div class="app__text" data-reveal>
-              <p class="app__meta"><span>01 / 04</span>Educação &amp; Interface</p>
-              <h3>Aprender UI/UX &amp; Design</h3>
-              <p>Plataforma interativa para dominar design de interfaces, teoria de UI/UX, tipografia e prototipagem com exercícios práticos e desafios.</p>
-              <a class="link-arrow" href="#contacto">Quero um aplicativo assim <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="app">
-            <div class="app__media" data-parallax><video data-src="./media/app-02.mp4" poster="./media/app-02.webp" muted loop playsinline preload="none"></video></div>
-            <div class="app__text" data-reveal>
-              <p class="app__meta"><span>02 / 04</span>Saúde &amp; Nutrição</p>
-              <h3>Nutrição &amp; Fitness Tracker</h3>
-              <p>Monitorização diária de calorias e macronutrientes, registo inteligente de refeições saudáveis e planos de treino para metas fitness.</p>
-              <a class="link-arrow" href="#contacto">Quero um aplicativo assim <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="app">
-            <div class="app__media" data-parallax><video data-src="./media/app-03.mp4" poster="./media/app-03.webp" muted loop playsinline preload="none"></video></div>
-            <div class="app__text" data-reveal>
-              <p class="app__meta"><span>03 / 04</span>Mobilidade &amp; GPS</p>
-              <h3>Rastreamento Veicular em Tempo Real</h3>
-              <p>Localização precisa de veículos no mapa em tempo real, alertas de segurança e ignição, histórico detalhado de rotas e monitorização 24h.</p>
-              <a class="link-arrow" href="#contacto">Quero um aplicativo assim <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="app">
-            <div class="app__media" data-parallax><video data-src="./media/app-04.mp4" poster="./media/app-04.webp" muted loop playsinline preload="none"></video></div>
-            <div class="app__text" data-reveal>
-              <p class="app__meta"><span>04 / 04</span>Viagens &amp; Lazer</p>
-              <h3>Guia de Destinos &amp; Turismo</h3>
-              <p>Descoberta de destinos turísticos deslumbrantes, guias culturais locais, itinerários personalizados e marcação fácil da sua próxima viagem.</p>
-              <a class="link-arrow" href="#contacto">Quero um aplicativo assim <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ============ 6. ANÚNCIOS ============ -->
-      <section id="anuncios" class="section ads">
-        <header class="section__head">
-          <p class="eyebrow" data-reveal>Publicidade &amp; anúncios</p>
-          <h2 class="section__title" data-reveal-words>Anúncios criados pela <em class="hl">HAV Agency.</em></h2>
-          <p class="section__lead" data-reveal>Vídeos verticais 9:16 desenvolvidos para Reels, Stories e TikTok. Criativos estratégicos concebidos para capturar a atenção imediata e converter visualizações em contactos e vendas.</p>
-        </header>
-
-        <div class="ads__row" data-ads>
-          <!-- filled by JS from ADS (src/sections/ads.ts) -->
-        </div>
-
-        <aside class="cta-banner" data-reveal>
-          <div>
-            <p class="eyebrow">Campanhas que geram vendas</p>
-            <h3>Precisa de anúncios que convertem para o seu negócio?</h3>
-            <p>Criamos anúncios profissionais adaptados ao orçamento da sua empresa com foco em resultados mensuráveis.</p>
-          </div>
-          <a class="btn btn--green" href="#contacto">Falar com a HAV Agency <span aria-hidden="true">↗</span></a>
-        </aside>
-      </section>
-
-      <!-- ============ 7. PROJETOS ============ -->
-      <section id="projetos" class="section projects">
-        <header class="section__head section__head--row">
-          <div>
-            <p class="eyebrow" data-reveal>Portfólio de projetos</p>
-            <h2 class="section__title" data-reveal-words>Trabalhos <em class="hl">selecionados.</em></h2>
-          </div>
-          <div class="filters" role="tablist" aria-label="Filtrar projetos" data-reveal>
-            <button type="button" role="tab" aria-selected="true" data-filter="all">Todos</button>
-            <button type="button" role="tab" aria-selected="false" data-filter="websites">Websites</button>
-            <button type="button" role="tab" aria-selected="false" data-filter="aplicativos">Aplicativos</button>
-            <button type="button" role="tab" aria-selected="false" data-filter="publicidade">Publicidade</button>
-            <button type="button" role="tab" aria-selected="false" data-filter="marketing">Marketing</button>
-          </div>
-        </header>
-
-        <div class="projects__grid" data-projects>
-          <!-- filled by JS from PROJECTS (src/sections/projects.ts) -->
-        </div>
-      </section>
-
-      <!-- ============ 8. SOBRE ============ -->
-      <section id="sobre" class="section about">
-        <div class="about__media" data-about-media>
-          <video data-src="./media/team.mp4" poster="./media/team.webp" muted loop playsinline preload="none" aria-label="Equipa HAV Agency"></video>
-        </div>
-        <div class="about__text">
-          <p class="eyebrow" data-reveal>Sobre a HAV Agency</p>
-          <h2 class="section__title" data-reveal-words>Tecnologia, estratégia e visão de <em class="hl">longo prazo.</em></h2>
-          <p data-reveal>A HAV Agency nasceu com o propósito de descomplicar o acesso à alta tecnologia e ao design premium para empresas que ambicionam liderar os seus setores.</p>
-          <p data-reveal>Não criamos produtos genéricos. Cada linha de código, transição visual e estrutura de conteúdo é desenvolvida para gerar autoridade, velocidade e retorno financeiro.</p>
-        </div>
-        <ul class="stats">
-          <li data-reveal><b><span data-count="5" data-prefix="+">+5</span> Anos</b><strong>Experiência no Digital</strong><p>Criação e lançamento de plataformas, websites e soluções focadas no mercado real.</p></li>
-          <li data-reveal><b><span data-count="100">100</span>%</b><strong>Foco em Performance</strong><p>Arquitetura moderna, sem código pesado, com carregamento instantâneo e segurança.</p></li>
-          <li data-reveal><b>Design</b><strong>Centrado no Utilizador</strong><p>Interfaces desenvolvidas para comunicar clareza, autoridade e conversão direta.</p></li>
-        </ul>
-      </section>
-
-      <!-- ============ 9. CONTACTO ============ -->
-      <section id="contacto" class="contact grain" aria-labelledby="contact-title">
-        <div class="contact__inner">
-          <p class="eyebrow">Iniciar projeto</p>
-          <h2 id="contact-title" class="contact__title title" data-words>
-            Vamos construir <br />a sua <em class="hl">presença digital?</em>
-          </h2>
-          <p class="contact__copy">Fale connosco hoje. Analisamos os seus objetivos e propomos a melhor abordagem tecnológica e estratégica.</p>
-
-          <div class="contact__grid">
-            <div class="channels">
-              <a class="channel" href="https://wa.me/258856485056" target="_blank" rel="noopener">
-                <small>WhatsApp direto</small><b>+258 85 648 5056</b><span>Resposta rápida por mensagem ↗</span>
-              </a>
-              <a class="channel" href="mailto:info@havagency.space">
-                <small>Email de suporte</small><b>info@havagency.space</b><span>Escreva-nos ↗</span>
-              </a>
-              <a class="channel" href="https://www.instagram.com/hav_.agency" target="_blank" rel="noopener">
-                <small>Instagram oficial</small><b>@hav_.agency</b><span>Acompanhe os nossos projetos ↗</span>
-              </a>
-            </div>
-
-            <form class="form" data-contact-form data-whatsapp="258856485056" data-email="info@havagency.space">
-              <label><span>Nome ou empresa *</span><input name="nome" required autocomplete="organization" /></label>
-              <label><span>Email *</span><input name="email" type="email" required autocomplete="email" /></label>
-              <label><span>Telefone / WhatsApp (opcional)</span><input name="telefone" type="tel" autocomplete="tel" /></label>
-              <label><span>Qual o serviço pretendido?</span>
-                <select name="servico">
-                  <option>Desenvolvimento de Websites</option>
-                  <option>Desenvolvimento de Aplicativos</option>
-                  <option>Consultoria Estratégica</option>
-                  <option>Publicidade de Baixo Custo</option>
-                  <option>Marketing Digital &amp; Crescimento</option>
-                  <option>Outro Projeto Personalizado</option>
-                </select>
-              </label>
-              <label class="form__full"><span>Descreva a sua ideia ou necessidade *</span><textarea name="mensagem" rows="4" required></textarea></label>
-              <div class="form__actions form__full">
-                <button class="btn" type="submit" data-via="whatsapp">Enviar pelo WhatsApp ↗</button>
-                <button class="btn btn--ghost" type="submit" data-via="email">Enviar por email</button>
+        <!-- DEMONSTRAÇÃO — horizontal while pinned -->
+        <section id="demonstracao" class="demo">
+          <div class="demo__pin">
+            <header class="demo__head">
+              <div>
+                <p class="eyebrow" data-i18n="demo.eyebrow">Projetos em funcionamento</p>
+                <h2 class="title section__title" data-i18n="demo.title">Demonstração dos sites.</h2>
               </div>
-              <p class="form__note form__full">Ao enviar, abrimos o WhatsApp ou o seu email com a mensagem pronta. Resposta ágil garantida.</p>
-            </form>
+              <p class="demo__count"><b data-demo-index>01</b> / 08</p>
+            </header>
+            <div class="demo__track" data-demo-track></div>
+            <div class="demo__progress" aria-hidden="true"><i data-demo-progress></i></div>
           </div>
+        </section>
 
-          <footer class="footer">
-            <div class="footer__brand"><span class="nav__logo" data-blob="4"></span><p><b>HAV</b> agency<br /><small>Digital solutions &amp; marketing.</small></p></div>
-            <nav aria-label="Rodapé"><a href="#inicio" data-scroll-to="top">Início</a><a href="#servicos">Serviços</a><a href="#demonstracao">Demonstração</a><a href="#projetos">Projetos</a><a href="#sobre">Sobre nós</a><a href="#contacto">Contacto</a></nav>
-            <p class="footer__legal">© <span data-year></span> HAV Agency. Todos os direitos reservados. · Estratégia · Tecnologia · Criatividade · <a href="#inicio" data-scroll-to="top">Topo ↑</a></p>
-          </footer>
-        </div>
+        <!-- APLICATIVOS -->
+        <section id="aplicativos" class="section">
+          <header class="section__head">
+            <p class="eyebrow" data-reveal data-i18n="apps.eyebrow">Aplicações móveis</p>
+            <h2 class="title section__title" data-reveal-words data-i18n="apps.title">Projetos para <em class="hl">iOS e Android.</em></h2>
+            <p class="section__lead" data-reveal data-i18n="apps.lead">Aplicações nativas desenhadas para velocidade, retenção de utilizadores e usabilidade intuitiva em dispositivos móveis.</p>
+          </header>
 
-        <div class="crowd" aria-hidden="true"></div>
-      </section>
+          <div class="apps">
+            <article class="app">
+              <div class="app__media" data-reveal-media><video data-src="./media/app-01.mp4" poster="./media/app-01.webp" muted loop playsinline preload="none"></video></div>
+              <div class="app__text" data-reveal data-i18n="apps.1">
+                <p class="app__meta">01 / 04 · Educação &amp; Interface</p>
+                <h3>Aprender UI/UX &amp; Design</h3>
+                <p>Plataforma interativa para dominar design de interfaces, teoria de UI/UX, tipografia e prototipagem com exercícios práticos.</p>
+              </div>
+            </article>
+            <article class="app">
+              <div class="app__media" data-reveal-media><video data-src="./media/app-02.mp4" poster="./media/app-02.webp" muted loop playsinline preload="none"></video></div>
+              <div class="app__text" data-reveal data-i18n="apps.2">
+                <p class="app__meta">02 / 04 · Saúde &amp; Nutrição</p>
+                <h3>Nutrição &amp; Fitness Tracker</h3>
+                <p>Monitorização diária de calorias e macronutrientes, registo inteligente de refeições e planos de treino para metas fitness.</p>
+              </div>
+            </article>
+            <article class="app">
+              <div class="app__media" data-reveal-media><video data-src="./media/app-03.mp4" poster="./media/app-03.webp" muted loop playsinline preload="none"></video></div>
+              <div class="app__text" data-reveal data-i18n="apps.3">
+                <p class="app__meta">03 / 04 · Mobilidade &amp; GPS</p>
+                <h3>Rastreamento Veicular em Tempo Real</h3>
+                <p>Localização precisa de veículos no mapa em tempo real, alertas de segurança, histórico de rotas e monitorização 24h.</p>
+              </div>
+            </article>
+            <article class="app">
+              <div class="app__media" data-reveal-media><video data-src="./media/app-04.mp4" poster="./media/app-04.webp" muted loop playsinline preload="none"></video></div>
+              <div class="app__text" data-reveal data-i18n="apps.4">
+                <p class="app__meta">04 / 04 · Viagens &amp; Lazer</p>
+                <h3>Guia de Destinos &amp; Turismo</h3>
+                <p>Descoberta de destinos, guias culturais locais, itinerários personalizados e marcação fácil da próxima viagem.</p>
+              </div>
+            </article>
+          </div>
+          <p class="section__more" data-reveal><a class="link" href="#contacto" data-i18n="apps.cta">Quero um aplicativo assim ↗</a></p>
+        </section>
+
+        <!-- ANÚNCIOS -->
+        <section id="anuncios" class="section">
+          <header class="section__head">
+            <p class="eyebrow" data-reveal data-i18n="ads.eyebrow">Publicidade &amp; anúncios</p>
+            <h2 class="title section__title" data-reveal-words data-i18n="ads.title">Anúncios criados pela <em class="hl">HAV Agency.</em></h2>
+            <p class="section__lead" data-reveal data-i18n="ads.lead">Vídeos verticais 9:16 para Reels, Stories e TikTok — pensados para prender a atenção nos primeiros segundos e converter visualizações em contactos.</p>
+          </header>
+          <div class="ads" data-ads></div>
+          <p class="section__more" data-reveal><a class="link" href="#contacto" data-i18n="ads.cta">Precisa de anúncios que convertem? Fale connosco ↗</a></p>
+        </section>
+
+        <!-- PROJETOS -->
+        <section id="projetos" class="section">
+          <header class="section__head section__head--row">
+            <div>
+              <p class="eyebrow" data-reveal data-i18n="proj.eyebrow">Portfólio de projetos</p>
+              <h2 class="title section__title" data-reveal-words data-i18n="proj.title">Trabalhos <em class="hl">selecionados.</em></h2>
+            </div>
+            <div class="filters" role="tablist" data-reveal>
+              <button type="button" role="tab" aria-selected="true" data-filter="all" data-i18n="proj.all">Todos</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="websites">Websites</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="aplicativos" data-i18n="proj.apps">Aplicativos</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="publicidade" data-i18n="proj.ads">Publicidade</button>
+              <button type="button" role="tab" aria-selected="false" data-filter="marketing">Marketing</button>
+            </div>
+          </header>
+          <ul class="projects" data-projects></ul>
+        </section>
+
+        <!-- SOBRE -->
+        <section id="sobre" class="section about">
+          <div class="about__media" data-reveal-media>
+            <video data-src="./media/team.mp4" poster="./media/team.webp" muted loop playsinline preload="none"></video>
+          </div>
+          <div class="about__text">
+            <p class="eyebrow" data-reveal data-i18n="about.eyebrow">Sobre a HAV Agency</p>
+            <h2 class="title section__title" data-reveal-words data-i18n="about.title">Tecnologia, estratégia e visão de <em class="hl">longo prazo.</em></h2>
+            <p data-reveal data-i18n="about.p1">A HAV Agency nasceu para descomplicar o acesso à alta tecnologia e ao design premium para empresas que ambicionam liderar os seus setores.</p>
+            <p data-reveal data-i18n="about.p2">Não criamos produtos genéricos. Cada linha de código, transição visual e estrutura de conteúdo é pensada para gerar autoridade, velocidade e retorno.</p>
+          </div>
+          <ul class="stats">
+            <li data-reveal><b><span data-count="5" data-prefix="+">+5</span></b><span data-i18n="about.s1">Anos de experiência no digital</span></li>
+            <li data-reveal><b><span data-count="100">100</span>%</b><span data-i18n="about.s2">Foco em performance</span></li>
+            <li data-reveal><b>UX</b><span data-i18n="about.s3">Design centrado no utilizador</span></li>
+          </ul>
+        </section>
+
+        <!-- CONTACTO -->
+        <section id="contacto" class="contact" aria-labelledby="contact-title">
+          <div class="contact__inner">
+            <p class="eyebrow" data-i18n="contact.eyebrow">Iniciar projeto</p>
+            <h2 id="contact-title" class="contact__title title" data-words data-i18n="contact.title">
+              Vamos construir <br />a sua <em class="hl">presença digital?</em>
+            </h2>
+            <p class="contact__copy" data-i18n="contact.copy">Fale connosco hoje. Analisamos os seus objetivos e propomos a melhor abordagem tecnológica e estratégica.</p>
+
+            <div class="contact__grid">
+              <div class="channels">
+                <a class="channel" href="https://wa.me/258856485056" target="_blank" rel="noopener">
+                  <small data-i18n="contact.wa">WhatsApp direto</small><b>+258 85 648 5056</b>
+                </a>
+                <a class="channel" href="mailto:info@havagency.space">
+                  <small>Email</small><b>info@havagency.space</b>
+                </a>
+                <a class="channel" href="https://www.instagram.com/hav_.agency" target="_blank" rel="noopener">
+                  <small>Instagram</small><b>@hav_.agency</b>
+                </a>
+              </div>
+
+              <form class="form" data-contact-form data-whatsapp="258856485056" data-email="info@havagency.space">
+                <label><span data-i18n="form.name">Nome ou empresa *</span><input name="nome" required autocomplete="organization" /></label>
+                <label><span>Email *</span><input name="email" type="email" required autocomplete="email" /></label>
+                <label><span data-i18n="form.phone">Telefone / WhatsApp (opcional)</span><input name="telefone" type="tel" autocomplete="tel" /></label>
+                <label><span data-i18n="form.service">Qual o serviço pretendido?</span>
+                  <select name="servico" data-i18n="form.options">
+                    <option>Desenvolvimento de Websites</option>
+                    <option>Desenvolvimento de Aplicativos</option>
+                    <option>Consultoria Estratégica</option>
+                    <option>Publicidade de Baixo Custo</option>
+                    <option>Marketing Digital &amp; Crescimento</option>
+                    <option>Outro Projeto Personalizado</option>
+                  </select>
+                </label>
+                <label class="form__full"><span data-i18n="form.message">Descreva a sua ideia ou necessidade *</span><textarea name="mensagem" rows="4" required></textarea></label>
+                <div class="form__actions form__full">
+                  <button class="btn" type="submit" data-via="whatsapp" data-i18n="form.wa">Enviar pelo WhatsApp ↗</button>
+                  <button class="btn btn--ghost" type="submit" data-via="email" data-i18n="form.email">Enviar por email</button>
+                </div>
+                <p class="form__note form__full" data-i18n="form.note">Ao enviar, abrimos o WhatsApp ou o seu email com a mensagem pronta.</p>
+              </form>
+            </div>
+
+            <footer class="footer">
+              <div class="footer__brand"><span class="nav__logo" data-blob="4"></span><p><b>HAV</b> agency<br /><small>Digital solutions &amp; marketing.</small></p></div>
+              <nav aria-label="Footer">
+                <a href="#servicos" data-i18n="nav.services">Serviços</a><a href="#demonstracao" data-i18n="nav.demo">Demonstração</a><a href="#projetos" data-i18n="nav.projects">Projetos</a><a href="#sobre" data-i18n="nav.about">Sobre nós</a><a href="#inicio" data-scroll-to="top" data-i18n="footer.top">Topo ↑</a>
+              </nav>
+              <p class="footer__legal">© <span data-year></span> HAV Agency. <span data-i18n="footer.rights">Todos os direitos reservados.</span></p>
+            </footer>
+          </div>
+          <div class="crowd" aria-hidden="true"></div>
+        </section>
+      </div>
     </main>
 
     <noscript><style>.intro{height:auto}.intro__content{opacity:1;visibility:visible}.story{margin-top:0}</style></noscript>
