@@ -1,417 +1,180 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Creative Studio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --red: #e62020;
-      --black: #0a0a0a;
-      --peach: #f6b89c;
-      --ink: rgba(20, 0, 0, 0.62);
-    }
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>%VITE_NAME% — %VITE_ROLE%</title>
+    <meta name="description" content="%VITE_NAME% is an independent %VITE_ROLE% crafting brand identities, websites and motion that people remember." />
+    <meta name="theme-color" content="#5ad64c" />
+    <meta name="color-scheme" content="light" />
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="%VITE_NAME% — %VITE_ROLE%" />
+    <meta property="og:description" content="Brand identities, websites and motion that people remember." />
+    <meta property="og:image" content="./og.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body data-theme="dark">
+    <a class="skip" href="#contact">Skip to contact</a>
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    <!-- ============================ NAV ============================ -->
+    <header class="nav">
+      <a class="nav__brand" href="#top" data-scroll-to="top" aria-label="%VITE_NAME% — home">
+        <span class="nav__logo" data-blob="0"></span>
+        <span class="nav__name">%VITE_NAME%</span>
+      </a>
+      <nav class="nav__links" aria-label="Main">
+        <a href="#top" data-scroll-to="top">Home</a>
+        <a href="#story" data-scroll-to="about">About</a>
+        <a href="#story" data-scroll-to="work">Work</a>
+        <a href="#contact" data-scroll-to="contact">Contact</a>
+      </nav>
+    </header>
 
-    html, body {
-      background: var(--red);
-      color: var(--black);
-      font-family: "Inter", system-ui, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
+    <main id="top">
+      <!-- ============ 1. INTRO — Framer-style scroll variants ============ -->
+      <section id="intro" class="intro" aria-label="Intro">
+        <div class="intro__stage">
+          <div class="intro__blob" id="intro-blob"></div>
 
-    body.is-dark { background: var(--black); }
+          <p class="corner corner--tr">%VITE_NAME%<sup>™</sup></p>
+          <p class="corner corner--bl">Portfolio ©<span data-year></span></p>
+          <p class="corner corner--br intro__hint" aria-hidden="true">Scroll <span>↓</span></p>
 
-    /* ---------- Fixed stage (the "Logo" component) ---------- */
-    .stage {
-      position: fixed;
-      inset: 0;
-      overflow: hidden;
-      background: var(--red);
-      transition: background-color 0.4s ease 0.35s;
-    }
-    body.is-dark .stage { background: var(--black); }
+          <ol class="intro__steps" aria-hidden="true">
+            <li></li><li></li><li></li><li></li><li></li><li></li>
+          </ol>
 
-    .stage svg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: block;
-    }
-
-    /* ---------- Corner labels ---------- */
-    .label {
-      position: fixed;
-      z-index: 5;
-      font-size: clamp(14px, 1.35vw, 20px);
-      font-weight: 300;
-      letter-spacing: -0.01em;
-      color: var(--ink);
-      transition: color 0.5s ease;
-      pointer-events: none;
-    }
-    .label sup { font-size: 0.55em; margin-left: 1px; }
-    .label--tr { top: clamp(16px, 3vw, 40px); right: clamp(16px, 3vw, 44px); }
-    .label--bl { bottom: clamp(16px, 3vw, 40px); left: clamp(16px, 3vw, 44px); }
-    body.is-dark .label { color: rgba(255, 255, 255, 0.55); }
-
-    /* ---------- Final (black) content ---------- */
-    .content {
-      position: fixed;
-      inset: 0;
-      z-index: 4;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: clamp(40px, 9vh, 110px);
-      pointer-events: none;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0s linear 0.3s;
-    }
-    body.is-dark .content {
-      opacity: 1;
-      visibility: visible;
-      transition: opacity 0.3s ease 0.25s, visibility 0s;
-    }
-
-    .intro {
-      max-width: min(620px, calc(100vw - 32px));
-      text-align: center;
-      color: #fff;
-      font-size: clamp(18px, 2vw, 28px);
-      font-weight: 500;
-      line-height: 1.3;
-      letter-spacing: -0.02em;
-    }
-    .intro .w {
-      display: inline-block;
-      opacity: 0;
-      filter: blur(10px);
-      transform: translateY(12px);
-      transition:
-        opacity 0.5s ease,
-        filter 0.6s ease,
-        transform 0.7s cubic-bezier(0.22, 1.4, 0.36, 1);
-      transition-delay: 0s;
-    }
-    body.is-dark .intro .w {
-      opacity: 1;
-      filter: blur(0);
-      transform: none;
-      transition-delay: calc(0.45s + var(--i) * 0.07s);
-    }
-    .intro .c1 { color: #ff6b8a; }
-    .intro .c2 { color: #4fb6ff; }
-    .intro .c3 { color: #b58cff; }
-    .intro .c4 { color: #ffc24b; }
-
-    /* ---------- Logo marquee ---------- */
-    .marquee {
-      width: min(1100px, 100vw);
-      overflow: hidden;
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.22, 1.2, 0.36, 1);
-      -webkit-mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-              mask-image: linear-gradient(90deg, transparent, #000 15%, #000 85%, transparent);
-    }
-    body.is-dark .marquee {
-      opacity: 1;
-      transform: none;
-      transition-delay: 1.4s;
-    }
-    .marquee__track {
-      display: flex;
-      width: max-content;
-      animation: marquee 28s linear infinite;
-    }
-    .marquee__group {
-      display: flex;
-      align-items: center;
-      gap: clamp(36px, 5vw, 72px);
-      padding-right: clamp(36px, 5vw, 72px);
-    }
-    @keyframes marquee {
-      to { transform: translateX(-50%); }
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      white-space: nowrap;
-      color: #fff;
-      font-size: clamp(15px, 1.4vw, 20px);
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      opacity: 0.92;
-    }
-    .brand i {
-      display: inline-grid;
-      place-items: center;
-      width: 1.35em;
-      height: 1.35em;
-      border-radius: 6px;
-      font-style: normal;
-      font-size: 0.8em;
-      font-weight: 800;
-      color: #fff;
-    }
-    .brand--lenovo { font-weight: 700; letter-spacing: -0.04em; }
-    .brand--dji { font-style: italic; font-weight: 800; font-size: clamp(18px, 1.7vw, 24px); letter-spacing: -0.06em; }
-    .brand--canva { color: #4fd1ff; font-family: Georgia, serif; font-style: italic; font-weight: 700; }
-    .brand--envato { color: #9be15d; font-weight: 700; }
-    .brand--adobe i { background: #fa0f00; border-radius: 3px; }
-    .brand--filmora i { background: linear-gradient(135deg, #00e0b8, #0077ff); }
-    .brand--clickup i { background: linear-gradient(135deg, #ff02f0, #8930fd 50%, #49ccf9); border-radius: 50%; }
-
-    /* ---------- Scroll spacers (Framer "sections") ---------- */
-    .spacer {
-      position: relative;
-      height: 100vh;
-      height: 100svh;
-      pointer-events: none;
-    }
-    .spacer:last-child { height: 120vh; }
-
-    .hint {
-      position: fixed;
-      z-index: 5;
-      bottom: clamp(16px, 3vw, 40px);
-      right: clamp(16px, 3vw, 44px);
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink);
-      transition: opacity 0.4s ease;
-      pointer-events: none;
-    }
-    body.scrolled .hint { opacity: 0; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .marquee__track { animation-duration: 80s; }
-      .intro .w { transition: opacity 0.3s ease; transform: none; filter: none; }
-    }
-  </style>
-</head>
-<body>
-  <!-- ==================== STAGE ==================== -->
-  <div class="stage" aria-hidden="true">
-    <svg id="logo" viewBox="0 0 400 400" preserveAspectRatio="xMidYMid meet">
-      <g id="rig">
-        <!-- Hair (bob) -->
-        <path id="hair" fill="#0a0a0a"
-          d="M98 282 C92 222 102 150 146 126 C176 110 224 110 254 126 C298 150 308 222 302 282 Q300 294 288 294 L112 294 Q100 294 98 282 Z" />
-        <!-- Bun -->
-        <circle id="bun" cx="200" cy="102" r="19" fill="#0a0a0a" />
-        <!-- Hairpins -->
-        <g id="pins" stroke="#c9191a" stroke-width="2.4" stroke-linecap="round">
-          <line x1="158" y1="86" x2="208" y2="104" />
-          <line x1="242" y1="86" x2="192" y2="104" />
-        </g>
-        <!-- Face -->
-        <circle id="face" cx="200" cy="215" r="85" fill="#f6b89c" />
-        <!-- Mouth -->
-        <circle id="mouth" cx="200" cy="258" r="9" fill="#0a0a0a" />
-        <!-- Glasses -->
-        <g id="glasses">
-          <g id="lensL">
-            <circle r="31" fill="none" stroke="#d21f1f" stroke-width="3.4" />
-            <line class="pl" x1="-13" y1="0" x2="13" y2="0" stroke="#0a0a0a" stroke-width="2.4" stroke-linecap="round" />
-            <circle class="pd" r="5.4" fill="#0a0a0a" />
-          </g>
-          <g id="lensR">
-            <circle r="31" fill="none" stroke="#d21f1f" stroke-width="3.4" />
-            <line class="pl" x1="-13" y1="0" x2="13" y2="0" stroke="#0a0a0a" stroke-width="2.4" stroke-linecap="round" />
-            <circle class="pd" r="5.4" fill="#0a0a0a" />
-          </g>
-          <path id="bridge" d="" fill="none" stroke="#d21f1f" stroke-width="3.4" stroke-linecap="round" />
-        </g>
-      </g>
-    </svg>
-  </div>
-
-  <!-- ==================== LABELS ==================== -->
-  <div class="label label--tr">Seu Nome<sup>TM</sup></div>
-  <div class="label label--bl">Creative Studio</div>
-  <div class="hint">Scroll ↓</div>
-
-  <!-- ==================== FINAL CONTENT ==================== -->
-  <section class="content" aria-live="polite">
-    <p class="intro" id="intro">
-      An independent design studio specializing in
-      <span data-c="c1">Graphic Design,</span>
-      <span data-c="c2">Video Editing,</span>
-      <span data-c="c3">Motion Design</span> &amp;
-      <span data-c="c4">Web Design.</span>
-    </p>
-
-    <div class="marquee">
-      <div class="marquee__track">
-        <div class="marquee__group">
-          <span class="brand brand--lenovo">Lenovo</span>
-          <span class="brand brand--dji">dji</span>
-          <span class="brand brand--canva">Canva</span>
-          <span class="brand brand--envato">envato</span>
-          <span class="brand brand--filmora"><i>F</i>Filmora</span>
-          <span class="brand brand--adobe"><i>A</i>Adobe</span>
-          <span class="brand brand--clickup"><i>✓</i>ClickUp</span>
+          <!-- revealed once the mouth swallows the screen -->
+          <div class="intro__content">
+            <h1 class="intro__statement" data-words>
+              %VITE_NAME% is an independent designer specializing in
+              <em class="c1">Brand Identity,</em>
+              <em class="c2">UI/UX,</em>
+              <em class="c3">Web Design</em> &amp;
+              <em class="c4">Motion.</em>
+            </h1>
+            <div class="marquee" aria-label="Tools">
+              <div class="marquee__track">
+                <ul class="marquee__group">
+                  <li>Figma</li><li>Framer</li><li>Webflow</li><li>After Effects</li><li>Illustrator</li><li>Photoshop</li><li>Blender</li><li>Spline</li>
+                </ul>
+                <ul class="marquee__group" aria-hidden="true">
+                  <li>Figma</li><li>Framer</li><li>Webflow</li><li>After Effects</li><li>Illustrator</li><li>Photoshop</li><li>Blender</li><li>Spline</li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="marquee__group" aria-hidden="true">
-          <span class="brand brand--lenovo">Lenovo</span>
-          <span class="brand brand--dji">dji</span>
-          <span class="brand brand--canva">Canva</span>
-          <span class="brand brand--envato">envato</span>
-          <span class="brand brand--filmora"><i>F</i>Filmora</span>
-          <span class="brand brand--adobe"><i>A</i>Adobe</span>
-          <span class="brand brand--clickup"><i>✓</i>ClickUp</span>
+      </section>
+
+      <!-- ============ 2. STORY — scroll-scrubbed pinned scenes ============ -->
+      <section id="story" class="story" aria-label="About and selected work">
+        <div class="story__stage grain">
+          <!-- Scene 1 — hero -->
+          <div class="s1">
+            <h2 class="s1__title title" data-words>
+              I make your <br /><span class="sw">B</span>rand the <br /><span class="sw">M</span>ain <span class="sw">C</span>haracter
+            </h2>
+            <p class="s1__copy">From bold ideas to unforgettable identities, I craft every detail of your brand with strategic thinking and creative precision.</p>
+
+            <aside class="s1__card glass">
+              <h3>Expertise focused on your goals</h3>
+              <dl>
+                <div><dt>Brand Identity</dt><dd>2–4 wks</dd></div>
+                <div><dt>UI/UX Design</dt><dd>3–6 wks</dd></div>
+                <div><dt>Web Development</dt><dd>2–5 wks</dd></div>
+                <div><dt>Motion Design</dt><dd>1–3 wks</dd></div>
+              </dl>
+              <a class="btn btn--light" href="#contact" data-scroll-to="contact">Get a quote</a>
+              <p class="s1__card-note">Estimate the time behind your next bold idea — from concept to launch.</p>
+            </aside>
+
+            <a class="s1__cta btn" href="#contact" data-scroll-to="contact">Let's start <span aria-hidden="true">▸</span></a>
+          </div>
+
+          <!-- The character (shared by every scene) -->
+          <div class="hero-blob" aria-hidden="true">
+            <div class="hero-blob__svg" id="story-blob"></div>
+            <div class="selection">
+              <i></i><i></i><i></i><i></i>
+              <span class="selection__label">Main Character · 320 × 320</span>
+            </div>
+          </div>
+
+          <!-- Designer cursor that "grabs" the character -->
+          <div class="cursor" aria-hidden="true">
+            <svg viewBox="0 0 32 32" width="100%" height="100%"><path d="M4 2l22 11.5-9.6 2.6L12 26z" fill="var(--ink)" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>
+            <span class="cursor__tag">you</span>
+          </div>
+
+          <div class="flash" aria-hidden="true"></div>
+
+          <!-- Scene 2 — process & work -->
+          <div class="s2">
+            <h2 class="s2__title title" data-words>
+              You think great <br />work <span class="sw">J</span>ust <span class="sw">H</span>appens?
+            </h2>
+
+            <ul class="notes" aria-label="Process">
+              <li class="note"><b>01 · Discover</b>Dig to the core. Uncover what makes your brand true, valuable and impossible to confuse.</li>
+              <li class="note"><b>02 · Define</b>Turn insight into a sharp strategy — position, voice and promise people can believe in.</li>
+              <li class="note"><b>03 · Design</b>Build a distinctive identity. Every shape, word and motion serves one system.</li>
+              <li class="note"><b>04 · Deliver</b>Launch with a toolkit that keeps the brand consistent everywhere it lives.</li>
+            </ul>
+
+            <p class="s2__label">Great brands aren't<br />grown overnight.</p>
+
+            <article class="card card--main glass" id="work">
+              <div class="thumb thumb--grid"><span data-blob="2"></span><span data-blob="4"></span><span data-blob="1"></span><span data-blob="5"></span></div>
+              <div class="card__body">
+                <h3>Blobby Co. — brand shot from every angle</h3>
+                <h4>Close-ups catch the character</h4>
+                <p>Soft light, bold outlines and playful mouths make every touchpoint feel alive.</p>
+                <h4>Multiple angles build a richer story</h4>
+                <p>From packaging to product UI, one character carries the whole identity.</p>
+                <p class="card__hl">Identity · Packaging · Motion — 2026</p>
+              </div>
+            </article>
+
+            <article class="card card--side card--a glass">
+              <div class="thumb thumb--type"><span>Aa</span><i data-blob="3"></i></div>
+              <p>Type that speaks before you read it</p>
+            </article>
+            <article class="card card--side card--b glass">
+              <div class="thumb thumb--phone"><div class="phone"><i data-blob="2"></i><b></b><b></b></div></div>
+              <p>Every screen tells the story</p>
+            </article>
+
+            <p class="s2__copy">From concept to identity, I shape every detail of your brand with strategy, craft and creative precision.</p>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ==================== SCROLL SECTIONS ==================== -->
-  <main>
-    <div class="spacer" data-variant="0"></div>
-    <div class="spacer" data-variant="1"></div>
-    <div class="spacer" data-variant="2"></div>
-    <div class="spacer" data-variant="3"></div>
-    <div class="spacer" data-variant="4"></div>
-  </main>
+      <!-- ============ 3. CONTACT ============ -->
+      <section id="contact" class="contact grain" aria-labelledby="contact-title">
+        <div class="contact__inner">
+          <h2 id="contact-title" class="contact__title title" data-words>
+            Hopefully, I've <br /><span class="sw">C</span>onvinced you. <br /><span class="sw">L</span>et's <span class="sw">C</span>onnect
+          </h2>
+          <p class="contact__copy">From concept to identity, I shape every detail of your brand with strategy, craft and creative precision.</p>
+          <a class="contact__email" href="mailto:%VITE_EMAIL%"><span class="paren">(</span>%VITE_EMAIL%<span class="paren">)</span></a>
 
-  <script>
-  (() => {
-    /* ------------------------------------------------------------------
-       Variants — the same 5 states built in Framer:
-       0 Primary    : small face, little "o" mouth
-       1 Variant 2  : face grows, mouth opens
-       2 Variant 3  : zoom in, mouth wide open
-       3 Variant 4  : mouth takes the face (peach ring), glasses pushed up
-       4 Variant 5  : mouth swallows the whole screen -> black section
-       ------------------------------------------------------------------ */
-    const VARIANTS = [
-      { s: 1.00, fx: 200, fy: 205, ty: 0,   mouthR: 9,  mouthY: 258, gy: 198, gs: 1.00, gd: 37 },
-      { s: 1.45, fx: 200, fy: 210, ty: 0,   mouthR: 25, mouthY: 255, gy: 196, gs: 1.00, gd: 37 },
-      { s: 2.70, fx: 200, fy: 200, ty: 120, mouthR: 54, mouthY: 262, gy: 188, gs: 1.00, gd: 38 },
-      { s: 1.70, fx: 200, fy: 215, ty: 30,  mouthR: 76, mouthY: 219, gy: 139, gs: 0.52, gd: 21 },
-      { s: 11.0, fx: 200, fy: 219, ty: 0,   mouthR: 79, mouthY: 219, gy: 139, gs: 0.52, gd: 21 },
-    ];
+          <footer class="footer">
+            <span>© <span data-year></span> %VITE_NAME%. All rights reserved.</span>
+            <a href="%VITE_INSTAGRAM%" target="_blank" rel="noopener">Instagram</a>
+            <a href="%VITE_BEHANCE%" target="_blank" rel="noopener">Behance</a>
+            <a href="%VITE_LINKEDIN%" target="_blank" rel="noopener">LinkedIn</a>
+            <span>%VITE_LOCATION%</span>
+          </footer>
+        </div>
 
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        <div class="crowd" aria-hidden="true"></div>
+      </section>
+    </main>
 
-    /* ---------- Spring (Framer-like: stiffness / damping / mass) ---------- */
-    const SPRING = { stiffness: 180, damping: 19, mass: 1 };
-    const keys = Object.keys(VARIANTS[0]);
-    const state = {};
-    keys.forEach(k => { state[k] = { v: VARIANTS[0][k], vel: 0, target: VARIANTS[0][k] }; });
-
-    // Intro: pop the logo in from nothing
-    state.s.v = 0.001;
-
-    const $ = id => document.getElementById(id);
-    const rig = $("rig"), mouth = $("mouth"), glasses = $("glasses");
-    const lensL = $("lensL"), lensR = $("lensR"), bridge = $("bridge");
-    const pupils = document.querySelectorAll(".pd");
-
-    /* ---------- Pupils follow the cursor (subtle idle life) ---------- */
-    let look = 0, lookTarget = 0;
-    window.addEventListener("pointermove", e => {
-      lookTarget = (e.clientX / window.innerWidth - 0.5) * 2; // -1..1
-    }, { passive: true });
-
-    function render() {
-      const g = k => state[k].v;
-      rig.setAttribute("transform",
-        `translate(200 ${200 + g("ty")}) scale(${g("s")}) translate(${-g("fx")} ${-g("fy")})`);
-      mouth.setAttribute("r", Math.max(0, g("mouthR")));
-      mouth.setAttribute("cy", g("mouthY"));
-
-      const gs = g("gs"), gd = g("gd"), gy = g("gy");
-      lensL.setAttribute("transform", `translate(${200 - gd} ${gy}) scale(${gs})`);
-      lensR.setAttribute("transform", `translate(${200 + gd} ${gy}) scale(${gs})`);
-      // Little arched bridge between lenses
-      const inner = gd - 31 * gs;
-      bridge.setAttribute("d",
-        `M ${200 - inner} ${gy - 6 * gs} Q 200 ${gy - 14 * gs} ${200 + inner} ${gy - 6 * gs}`);
-
-      const off = look * 8;
-      pupils.forEach(p => p.setAttribute("cx", off));
-    }
-
-    let last = performance.now();
-    function tick(now) {
-      let dt = Math.min((now - last) / 1000, 1 / 30);
-      last = now;
-
-      // sub-step for stability on big jumps
-      const steps = 4, h = dt / steps;
-      for (let i = 0; i < steps; i++) {
-        for (const k of keys) {
-          const p = state[k];
-          if (reduced) { p.v = p.target; p.vel = 0; continue; }
-          const force = -SPRING.stiffness * (p.v - p.target) - SPRING.damping * p.vel;
-          p.vel += (force / SPRING.mass) * h;
-          p.v += p.vel * h;
-        }
-      }
-      look += (lookTarget - look) * Math.min(1, dt * 8);
-
-      render();
-      requestAnimationFrame(tick);
-    }
-
-    function setVariant(i) {
-      const v = VARIANTS[i];
-      keys.forEach(k => { state[k].target = v[k]; });
-      document.body.classList.toggle("is-dark", i === VARIANTS.length - 1);
-    }
-
-    /* ---------- "Section in View" triggers (Replay: yes) ---------- */
-    let current = -1;
-    function onScroll() {
-      const vh = window.innerHeight;
-      const idx = Math.max(0, Math.min(VARIANTS.length - 1,
-        Math.floor((window.scrollY + vh * 0.5) / vh)));
-      document.body.classList.toggle("scrolled", window.scrollY > 10);
-      if (idx !== current) {
-        current = idx;
-        setVariant(idx);
-      }
-    }
-
-    /* ---------- Split intro text into words for the staggered reveal ---------- */
-    (function splitWords() {
-      const intro = $("intro");
-      const frag = document.createDocumentFragment();
-      let i = 0;
-      intro.childNodes.forEach(node => {
-        const cls = node.nodeType === 1 ? node.dataset.c : "";
-        node.textContent.split(/\s+/).filter(Boolean).forEach(word => {
-          const s = document.createElement("span");
-          s.className = "w" + (cls ? " " + cls : "");
-          s.style.setProperty("--i", i++);
-          s.textContent = word;
-          frag.appendChild(s);
-          frag.appendChild(document.createTextNode(" "));
-        });
-      });
-      intro.textContent = "";
-      intro.appendChild(frag);
-    })();
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-    onScroll();
-    requestAnimationFrame(tick);
-  })();
-  </script>
-</body>
+    <noscript><style>.intro{height:auto}.intro__content{opacity:1;visibility:visible}</style></noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
 </html>

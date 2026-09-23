@@ -1,22 +1,42 @@
-# Creative Studio — scroll-animated landing page
+# Portfólio — Henriquest
 
-Recriação do site "Creative Studio" feito em Framer (logo com rosto que abre a boca conforme o scroll).
+Site de portfólio com o personagem verde, animações de scroll no estilo Framer (scroll variants com spring) e cenas roteirizadas pelo scroll (pin + scrub).
 
-Abra `index.html` direto no navegador — não precisa de build nem dependências.
+## Tecnologias
+- **Vite + TypeScript**: build rápido, código tipado, bundle minificado
+- **GSAP + ScrollTrigger**: cenas fixas (pin) e animações ligadas ao scroll (scrub)
+- **Lenis**: scroll suave
+- **Fontsource**: fontes hospedadas no próprio site (só o subconjunto latino: Instrument Serif, Pinyon Script, Inter)
+- Personagem 100% em **SVG** (sem imagens pesadas), com mola própria (stiffness/damping/mass, igual ao Framer)
 
-## Como funciona
-- **Logo em SVG** (cabelo, coque com hashis, rosto, óculos, boca) fixo na tela.
-- **5 variantes** (igual às "Scroll Variants" do Framer, trigger *Section in View*, replay ativado):
-  1. Rosto pequeno, boca em "o"
-  2. Rosto cresce, boca abre
-  3. Zoom — boca bem aberta
-  4. Boca toma o rosto (vira um anel), óculos sobem
-  5. Boca engole a tela → seção preta com o texto e o marquee de marcas
-- Transições com **spring** (stiffness/damping) como no Framer, pupilas seguem o mouse.
-- Texto final aparece palavra por palavra com blur; logos passam em loop infinito.
+## Rodar
+```bash
+npm install
+npm run dev       # desenvolvimento em http://localhost:5173
+npm run build     # gera a versão otimizada em dist/
+npm run preview   # testa a versão de produção
+```
 
 ## Personalizar
-- Nome no canto: procure `Seu Nome` no `index.html`.
-- Cores: variáveis `--red`, `--peach`, `--black` no topo do CSS.
-- Tamanhos/posições de cada variante: array `VARIANTS` no script.
-- Mola: `SPRING = { stiffness, damping, mass }`.
+- **Nome, e-mail, redes, localização**: arquivo `.env` (depois rode `npm run build`)
+- **Textos**: `index.html` (todo o conteúdo está no HTML, bom para SEO)
+- **Cores**: variáveis `--green`, `--ink`, … no topo de `src/styles/main.css`
+- **Personagem / bocas**: `src/lib/blob.ts` (array `MOUTHS` = os 6 quadros)
+- **Mola das variantes**: `FRAMER_SPRING` em `src/lib/spring.ts`
+- **Sequência do scroll**: `src/sections/story.ts` (timeline com labels `about`, `process`, `work`, `exit`)
+
+## Estrutura do scroll
+1. **Intro**: 6 quadros do personagem (a boca vai abrindo, com o fundo alternando preto/verde) → a boca engole a tela → texto + marquee de ferramentas
+2. **Íris**: um círculo abre no preto e revela a história
+3. **História (fixa na tela)**: título some com blur → cursor de design "pega" o personagem → flash → novo título → post-its entram e saem → cards de projetos entram pelos lados → tudo sai
+4. **Contato**: título com letras cursivas, e-mail, e vários personagens subindo por baixo
+
+## Publicar
+- **GitHub Pages**: já tem workflow em `.github/workflows/deploy.yml`. Em *Settings → Pages*, escolha *Source: GitHub Actions*. Cada push na `main` publica.
+- **Vercel / Netlify**: build `npm run build`, pasta `dist`.
+
+## Otimizações
+- JS ~55 kB gzip, CSS ~5 kB gzip, fontes só em latim (woff2)
+- Nenhuma imagem no site além do ícone e da imagem de compartilhamento
+- Respeita *reduzir movimento* do sistema (desliga o scroll suave e a mola)
+- Metatags de SEO e Open Graph, favicon SVG, `robots.txt`
