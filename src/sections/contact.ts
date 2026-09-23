@@ -4,14 +4,16 @@ import { blobMarkup } from "../lib/blob";
 /** Contact: headline reveal + a crowd of characters rising from the bottom. */
 export function initContact(): void {
   const words = document.querySelectorAll(".contact__title .w");
-  const rest = document.querySelectorAll(".contact__copy, .contact__email, .footer");
+  const rest = document.querySelectorAll(".contact .eyebrow, .contact__copy, .contact__grid, .footer");
 
   gsap
     .timeline({
-      scrollTrigger: { trigger: "#contact", start: "top 65%", toggleActions: "play none none reverse" },
+      scrollTrigger: { trigger: "#contacto", start: "top 65%", toggleActions: "play none none reverse" },
     })
     .from(words, { yPercent: 110, opacity: 0, filter: "blur(10px)", stagger: 0.05, duration: 1, ease: "power3.out" })
     .from(rest, { y: 30, opacity: 0, stagger: 0.12, duration: 0.8, ease: "power3.out" }, "-=0.6");
+
+  initForm();
 
   // Build the crowd
   const crowd = document.querySelector<HTMLElement>(".crowd")!;
@@ -39,7 +41,7 @@ export function initContact(): void {
       rotation: () => rand(-10, 10),
       ease: "back.out(1.7)",
       stagger: { each: 0.05, from: "center" },
-      scrollTrigger: { trigger: "#contact", start: "top 35%", end: "bottom bottom", scrub: 1 },
+      scrollTrigger: { trigger: "#contacto", start: "top 35%", end: "bottom bottom", scrub: 1 },
     },
   );
 
@@ -53,5 +55,33 @@ export function initContact(): void {
       ease: "sine.inOut",
       delay: rand(0, 1.5),
     });
+  });
+}
+
+/** No backend needed: the form opens WhatsApp (or the mail app) with the message ready. */
+function initForm(): void {
+  const form = document.querySelector<HTMLFormElement>("[data-contact-form]");
+  if (!form) return;
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const via = (e.submitter as HTMLElement | null)?.dataset.via ?? "whatsapp";
+    const d = new FormData(form);
+    const get = (k: string) => String(d.get(k) ?? "").trim();
+    const text = [
+      "Olá HAV Agency! 👋",
+      `Nome/Empresa: ${get("nome")}`,
+      `Email: ${get("email")}`,
+      get("telefone") ? `Telefone: ${get("telefone")}` : "",
+      `Serviço: ${get("servico")}`,
+      "",
+      get("mensagem"),
+    ]
+      .filter((line, i) => line !== "" || i === 5)
+      .join("\n");
+    const url =
+      via === "email"
+        ? `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Novo projeto — ${get("servico")}`)}&body=${encodeURIComponent(text)}`
+        : `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(text)}`;
+    window.open(url, via === "email" ? "_self" : "_blank", "noopener");
   });
 }

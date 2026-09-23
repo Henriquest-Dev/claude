@@ -1,5 +1,3 @@
-import "@fontsource/instrument-serif/latin-400.css";
-import "@fontsource/pinyon-script/latin-400.css";
 import "./styles/fonts.css";
 import "./styles/main.css";
 
@@ -9,15 +7,21 @@ import Lenis from "lenis";
 
 import { blobMarkup, tickBlobs, followPointer } from "./lib/blob";
 import { splitWords } from "./lib/split";
+import { initVideos } from "./lib/media";
 import { initIntro } from "./sections/intro";
 import { initStory } from "./sections/story";
+import { initDemo } from "./sections/demo";
+import { initAds } from "./sections/ads";
+import { initProjects } from "./sections/projects";
+import { initReveals } from "./sections/reveal";
 import { initContact } from "./sections/contact";
+import { initNav } from "./sections/nav";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- static characters (logo, thumbnails) ---------- */
+/* ---------- static characters (logos) ---------- */
 document.querySelectorAll<HTMLElement>("[data-blob]").forEach((el) => {
   el.innerHTML = blobMarkup({ mouth: Number(el.dataset.blob), className: "blob--static" });
 });
@@ -34,33 +38,22 @@ if (!reduced) {
 }
 gsap.ticker.add((_time, deltaMs) => tickBlobs(deltaMs / 1000));
 
-/* ---------- sections ---------- */
+/* ---------- sections (order matters: pins are created top → bottom) ---------- */
 const introBlob = initIntro(reduced);
 const story = initStory();
+initDemo();
+initAds();
+initProjects();
+initReveals(reduced);
 initContact();
+initVideos(reduced);
 
 followPointer(document, (x, y) => {
   introBlob.setLook(x, y);
   story.blob.setLook(x, y);
 });
 
-/* ---------- nav links ---------- */
-const targets: Record<string, () => number> = {
-  top: () => 0,
-  about: () => story.labelToScroll("about") + 2,
-  work: () => story.labelToScroll("work") + window.innerHeight * 0.9,
-  contact: () => document.getElementById("contact")!.offsetTop,
-};
-document.querySelectorAll<HTMLAnchorElement>("[data-scroll-to]").forEach((a) => {
-  a.addEventListener("click", (e) => {
-    const get = targets[a.dataset.scrollTo ?? ""];
-    if (!get) return;
-    e.preventDefault();
-    const y = get();
-    if (lenis) lenis.scrollTo(y, { duration: 1.6 });
-    else window.scrollTo({ top: y });
-  });
-});
+initNav(lenis, { top: () => 0 });
 
-/* layout depends on web fonts */
+/* layout depends on the web font */
 document.fonts?.ready.then(() => ScrollTrigger.refresh());

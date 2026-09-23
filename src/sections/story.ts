@@ -18,7 +18,7 @@ export function initStory(): { blob: BlobController; labelToScroll: (label: stri
   const cursor = q(".cursor");
   const selection = q(".selection");
   const s1Words = qa(".s1__title .w");
-  const s1Rest = [q(".s1__copy"), q(".s1__card"), q(".s1__cta")];
+  const s1Rest = [q(".s1__eyebrow"), q(".s1__copy"), q(".s1__card"), q(".s1__cta")];
   const s2Words = qa(".s2__title .w");
   const notes = qa(".note");
   const cardMain = q(".card--main");

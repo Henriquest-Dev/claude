@@ -1,8 +1,8 @@
-/* Latin subset only (covers PT/EN) — keeps the font payload small */
+/* Outfit (variable 100–900), latin subset only — the one typeface used across the whole site */
 @font-face {
-  font-family: "Inter Variable";
+  font-family: "Outfit";
   font-style: normal;
   font-display: swap;
   font-weight: 100 900;
-  src: url("../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2") format("woff2-variations");
+  src: url("../../node_modules/@fontsource-variable/outfit/files/outfit-latin-wght-normal.woff2") format("woff2-variations");
 }
