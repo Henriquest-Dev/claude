@@ -1,10 +1,11 @@
 import gsap from "gsap";
 import { blobMarkup } from "../lib/blob";
+import { tr } from "../i18n";
 
 /** Contact: headline reveal + a crowd of characters rising from the bottom. */
 export function initContact(): void {
   const words = document.querySelectorAll(".contact__title .w");
-  const rest = document.querySelectorAll(".contact .eyebrow, .contact__copy, .contact__grid, .footer");
+  const rest = document.querySelectorAll(".contact__inner > .eyebrow, .contact__copy, .contact__grid, .footer");
 
   gsap
     .timeline({
@@ -68,11 +69,11 @@ function initForm(): void {
     const d = new FormData(form);
     const get = (k: string) => String(d.get(k) ?? "").trim();
     const text = [
-      "Olá HAV Agency! 👋",
-      `Nome/Empresa: ${get("nome")}`,
+      tr("Olá HAV Agency! 👋", "Hi HAV Agency! 👋"),
+      `${tr("Nome/Empresa", "Name/Company")}: ${get("nome")}`,
       `Email: ${get("email")}`,
-      get("telefone") ? `Telefone: ${get("telefone")}` : "",
-      `Serviço: ${get("servico")}`,
+      get("telefone") ? `${tr("Telefone", "Phone")}: ${get("telefone")}` : "",
+      `${tr("Serviço", "Service")}: ${get("servico")}`,
       "",
       get("mensagem"),
     ]
@@ -80,7 +81,7 @@ function initForm(): void {
       .join("\n");
     const url =
       via === "email"
-        ? `mailto:${form.dataset.email}?subject=${encodeURIComponent(`Novo projeto — ${get("servico")}`)}&body=${encodeURIComponent(text)}`
+        ? `mailto:${form.dataset.email}?subject=${encodeURIComponent(`${tr("Novo projeto", "New project")} — ${get("servico")}`)}&body=${encodeURIComponent(text)}`
         : `https://wa.me/${form.dataset.whatsapp}?text=${encodeURIComponent(text)}`;
     window.open(url, via === "email" ? "_self" : "_blank", "noopener");
   });
