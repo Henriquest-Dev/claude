@@ -1,7 +1,6 @@
-import gsap from "gsap";
 import { tr } from "../i18n";
 
-/** 5 vertical 9:16 ads in simple phone frames, with a sound toggle. */
+/** Builds the 5 vertical 9:16 ads (animated by the stage timeline), with a sound toggle. */
 const ADS = tr(
   [
     { tag: "Alta retenção", title: "Atração de tráfego & conversão direta" },
@@ -22,7 +21,7 @@ const ADS = tr(
 const SOUND_ON = tr("Som ligado", "Sound on");
 const SOUND_OFF = tr("Ligar som", "Sound off");
 
-export function initAds(): void {
+export function buildAds(): void {
   const row = document.querySelector<HTMLElement>("[data-ads]")!;
   row.innerHTML = ADS.map((ad, i) => {
     const n = String(i + 1).padStart(2, "0");
@@ -58,13 +57,4 @@ export function initAds(): void {
     });
   });
 
-  gsap.from(row.querySelectorAll(".ad"), {
-    y: 80,
-    opacity: 0,
-    filter: "blur(8px)",
-    stagger: 0.08,
-    duration: 1,
-    ease: "power3.out",
-    scrollTrigger: { trigger: row, start: "top 85%", once: true },
-  });
 }
