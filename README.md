@@ -2,7 +2,7 @@
 
 Site da HAV Agency com o mascote verde (slime), animações de scroll no estilo Framer (variantes com mola) e cenas controladas pela rolagem (pin + scrub). O conteúdo vem do portfólio antigo (havagency.space).
 
-**Online:** https://henriquest-dev.github.io/claude/
+**Online:** https://havagency.space/ (cópia também em https://henriquest-dev.github.io/claude/)
 
 ## Estrutura da página
 1. **Intro**: 6 quadros do slime (a boca vai abrindo) → a boca engole a tela → frase + marquee. Aviso centrado "Continua a rolar".
