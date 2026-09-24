@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://henriquest-dev.github.io/claude/sitemap.xml
+Sitemap: https://havagency.space/sitemap.xml
