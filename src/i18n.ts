@@ -18,6 +18,9 @@ function detect(): Lang {
   } catch {
     /* storage blocked */
   }
+  // Crawlers always get the page as published (PT here, EN at ?lang=en);
+  // real visitors get their browser language.
+  if (/bot|crawl|spider|slurp|google|bing|facebookexternalhit|whatsapp|lighthouse/i.test(navigator.userAgent)) return "pt";
   return navigator.language?.toLowerCase().startsWith("pt") ? "pt" : "en";
 }
 
@@ -27,8 +30,8 @@ export const lang: Lang = detect();
 export const tr = <T,>(pt: T, en: T): T => (lang === "en" ? en : pt);
 
 const EN: Record<string, string> = {
-  "meta.title": "HAV Agency — Digital Solutions &amp; Marketing",
-  "meta.desc": "HAV Agency builds websites, apps, digital solutions, low-cost advertising and marketing strategies for businesses and entrepreneurs.",
+  "meta.title": "HAV Agency — Digital Agency: Websites, Apps &amp; Marketing",
+  "meta.desc": "Digital agency based in Mozambique: we build fast websites, iOS and Android apps, Instagram and TikTok ads and marketing strategies for your business.",
   skip: "Skip to contact",
   "nav.home": "Home",
   "nav.services": "Services",
@@ -138,6 +141,12 @@ export function applyTranslations(): void {
     if (EN[key]) el.setAttribute(attr, EN[key]);
   });
   document.title = document.title.replace("&amp;", "&");
+
+  // The English page is its own URL (?lang=en) for search engines
+  const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (canonical) canonical.href = canonical.href.split("?")[0] + "?lang=en";
+  document.querySelector('meta[property="og:locale"]')?.setAttribute("content", "en_US");
+  document.querySelector('meta[property="og:locale:alternate"]')?.setAttribute("content", "pt_PT");
 }
 
 /** Language buttons: remember the choice and reload at the same scroll position. */
@@ -152,8 +161,10 @@ export function initLangSwitch(): void {
       } catch {
         /* storage blocked — still switch */
       }
+      // Each language has its own address: / (PT) and /?lang=en (EN)
       const url = new URL(location.href);
-      url.searchParams.delete("lang");
+      if (next === "en") url.searchParams.set("lang", "en");
+      else url.searchParams.delete("lang");
       url.hash = "";
       location.replace(url.toString());
     }),

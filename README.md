@@ -41,6 +41,17 @@ npm run build     # versão otimizada em dist/
 ## Publicar
 Cada push na `main` roda `.github/workflows/deploy.yml`, que gera o site e publica na branch `gh-pages` (GitHub Pages).
 
+## SEO (Google)
+Gerado a partir do `.env` em cada build (`vite.config.ts`):
+- `sitemap.xml` (versão PT `/` e EN `/?lang=en`, com `hreflang`), `robots.txt` (aponta para o sitemap) e `404.html`
+- `<link rel="canonical">`, `hreflang` pt/en/x-default, título e descrição por língua
+- Dados estruturados Schema.org (`ProfessionalService` + `WebSite`) com contactos, Instagram e serviços
+- Open Graph / Twitter (imagem 1200×630), `site.webmanifest`
+- Verificação do Google Search Console: cole o código em `VITE_GOOGLE_SITE_VERIFICATION` no `.env` e faça push
+- Robôs de pesquisa recebem sempre a página tal como publicada (PT em `/`, EN em `/?lang=en`)
+
+**Mudar para um domínio próprio:** altere `VITE_SITE_URL` no `.env` (ex.: `https://havagency.space/`) e tudo acima é atualizado.
+
 ## Otimizações
 - Vídeos comprimidos e carregados só quando a sua cena está visível; pausam ao sair
 - Imagem de pré-visualização (webp) em cada vídeo

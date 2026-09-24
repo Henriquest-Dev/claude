@@ -1,0 +1,13 @@
+{
+  "name": "HAV Agency",
+  "short_name": "HAV",
+  "description": "Agência digital: websites, aplicativos, publicidade e marketing.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#5ad64c",
+  "theme_color": "#5ad64c",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
+}
