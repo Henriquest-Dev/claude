@@ -1,11 +1,6 @@
-import gsap from "gsap";
-import { Flip } from "gsap/Flip";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { tr } from "../i18n";
 
-gsap.registerPlugin(Flip);
-
-/** Selected work — a clean editorial list with animated filters (GSAP Flip). */
+/** Builds the selected-work list (animated by the stage timeline). */
 const PROJECTS = tr(
   [
     { cat: "websites", label: "Website", title: "Lumina Studio & Arquitetura", text: "Website institucional editorial com tipografia minimalista e portfólio de alta fidelidade." },
@@ -25,12 +20,12 @@ const PROJECTS = tr(
   ],
 );
 
-export function initProjects(): void {
+export function buildProjects(): void {
   const list = document.querySelector<HTMLElement>("[data-projects]")!;
   list.innerHTML = PROJECTS.map(
     (p, i) => `
-    <li class="project" data-cat="${p.cat}" data-reveal>
-      <a href="#contacto">
+    <li class="project">
+      <a href="#contacto" data-scroll-to="contact">
         <span class="project__num">${String(i + 1).padStart(2, "0")}</span>
         <span class="project__title">${p.title}</span>
         <span class="project__text">${p.text}</span>
@@ -40,23 +35,4 @@ export function initProjects(): void {
     </li>`,
   ).join("");
 
-  const items = [...list.querySelectorAll<HTMLElement>(".project")];
-  const buttons = [...document.querySelectorAll<HTMLButtonElement>("[data-filter]")];
-
-  buttons.forEach((btn) =>
-    btn.addEventListener("click", () => {
-      const f = btn.dataset.filter!;
-      buttons.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
-      const state = Flip.getState(items);
-      items.forEach((c) => c.classList.toggle("is-hidden", f !== "all" && c.dataset.cat !== f));
-      Flip.from(state, {
-        duration: 0.55,
-        ease: "power3.inOut",
-        absolute: true,
-        onEnter: (els) => gsap.fromTo(els, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.45 }),
-        onLeave: (els) => gsap.to(els, { opacity: 0, duration: 0.3 }),
-        onComplete: () => ScrollTrigger.refresh(),
-      });
-    }),
-  );
 }

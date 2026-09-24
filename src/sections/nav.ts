@@ -23,18 +23,13 @@ export function initNav(lenis: Lenis | null, extraTargets: Record<string, () => 
     else window.scrollTo({ top: y });
   };
 
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((a) => {
+  document.querySelectorAll<HTMLAnchorElement>("a[data-scroll-to]").forEach((a) => {
     a.addEventListener("click", (e) => {
-      const key = a.dataset.scrollTo;
-      const id = a.getAttribute("href")!.slice(1);
-      const el = id ? document.getElementById(id) : null;
-      let y: number | null = null;
-      if (key && extraTargets[key]) y = extraTargets[key]();
-      else if (el) y = el.getBoundingClientRect().top + window.scrollY;
-      if (y === null) return;
+      const get = extraTargets[a.dataset.scrollTo!];
+      if (!get) return;
       e.preventDefault();
       if (!menu.hidden) setMenu(false);
-      scrollTo(y);
+      scrollTo(get());
     });
   });
 

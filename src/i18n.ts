@@ -38,6 +38,9 @@ const EN: Record<string, string> = {
   "nav.contact": "Contact",
   "nav.cta": "Let's talk",
   "menu.label": "Navigation",
+  hint: "Keep scrolling",
+  "contact.write": "Write a message ↗",
+  "modal.title": "Tell us about your project",
 
   "intro.statement": `HAV Agency turns ideas into <em class="c1">digital solutions:</em> <em class="c2">websites,</em> <em class="c3">apps,</em> <em class="c4">advertising</em> &amp; <em class="c1">marketing.</em>`,
   "intro.marquee": "<li>Strategy</li><li>Technology</li><li>Creativity</li><li>Websites</li><li>Apps</li><li>Advertising</li><li>Marketing</li><li>Consulting</li>",

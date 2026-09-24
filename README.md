@@ -5,24 +5,16 @@ Site da HAV Agency com o mascote verde (slime), animações de scroll no estilo 
 **Online:** https://henriquest-dev.github.io/claude/
 
 ## Estrutura da página
-1. **Intro**: 6 quadros do slime (a boca vai abrindo) → a boca engole a tela → frase + marquee
-2. **Íris**: um círculo abre no preto e revela a cena seguinte
-3. **Cena fixa**: título some → o cursor "pega" o slime → flash → post-its do processo → cards com vídeos (site, app, anúncio)
-4. **Serviços**: lista editorial; o serviço no meio do ecrã fica em foco
-5. **Demonstração**: os 8 sites em vídeo, numa galeria horizontal controlada pela rolagem
-6. **Aplicativos**: 4 apps com vídeo e parallax
-7. **Anúncios**: 5 anúncios 9:16 em moldura de telemóvel, com botão de som
-
-Tudo depois da cena fixa partilha o mesmo fundo verde, a mesma tipografia e as mesmas entradas (desfoque a subir), para a navegação ser uniforme.
-8. **Projetos**: lista editorial com filtros animados (GSAP Flip)
-9. **Sobre**: vídeo da equipa + contadores
-10. **Contacto**: canais diretos + formulário que abre o WhatsApp/email com a mensagem pronta, e os slimes subindo por baixo
+1. **Intro**: 6 quadros do slime (a boca vai abrindo) → a boca engole a tela → frase + marquee. Aviso centrado "Continua a rolar".
+2. **Íris**: um círculo abre no preto e revela o palco.
+3. **Um único palco fixo para o resto do site** (`src/sections/story.ts`), controlado pela rolagem, como no vídeo de referência: herói → o cursor pega o slime → processo (post-its) → serviços (um de cada vez) → demonstração dos 8 sites (a fita desliza) → apps (slides) → anúncios (telemóveis sobem) → projetos → sobre (contadores) → contacto (os slimes sobem por baixo). O slime acompanha as cenas.
+4. **Formulário**: abre numa janela ("Escrever mensagem") e envia pelo WhatsApp ou email com a mensagem pronta.
 
 ## Idiomas (PT/EN)
 O português está no `index.html`; o inglês fica em `src/i18n.ts` (mesmas chaves `data-i18n`). Textos gerados por script (sites, anúncios, projetos, mensagem do formulário) usam `tr(pt, en)` no próprio ficheiro. O botão PT/EN guarda a escolha e recarrega na mesma posição; visitantes com o navegador em inglês veem inglês por padrão. Link direto: `?lang=en` ou `?lang=pt`.
 
 ## Tecnologias
-Vite + TypeScript · GSAP (ScrollTrigger, Flip) · Lenis · fonte **Outfit** em todo o site (auto-hospedada, só latim) · personagem em SVG.
+Vite + TypeScript · GSAP (ScrollTrigger) · Lenis · fonte **Outfit** em todo o site (auto-hospedada, só latim) · personagem em SVG.
 
 ## Rodar
 ```bash
@@ -39,9 +31,10 @@ npm run build     # versão otimizada em dist/
 | Sites da demonstração | `src/sections/demo.ts` + vídeos `public/media/site-XX.mp4` |
 | Anúncios | `src/sections/ads.ts` + `public/media/ad-XX.mp4` |
 | Projetos | `src/sections/projects.ts` |
+| Velocidade do scroll (ecrãs por unidade) | constante `K` em `src/sections/story.ts` |
 | Cores | topo de `src/styles/main.css` |
 | Personagem / bocas | `src/lib/blob.ts` |
-| Sequência da cena fixa | `src/sections/story.ts` |
+| Sequência das cenas (ordem, tempos, posições do slime) | `src/sections/story.ts` |
 
 **Trocar um vídeo:** coloque o `.mp4` em `public/media/` com o mesmo nome (ex.: `site-03.mp4`) e uma imagem `.webp` do primeiro frame com o mesmo nome.
 
@@ -49,7 +42,7 @@ npm run build     # versão otimizada em dist/
 Cada push na `main` roda `.github/workflows/deploy.yml`, que gera o site e publica na branch `gh-pages` (GitHub Pages).
 
 ## Otimizações
-- Vídeos comprimidos (48 MB → 14,6 MB) e carregados só quando aparecem na tela; pausam ao sair
+- Vídeos comprimidos e carregados só quando a sua cena está visível; pausam ao sair
 - Imagem de pré-visualização (webp) em cada vídeo
 - JS ~68 kB gzip, uma única fonte (woff2, subset latino)
 - Respeita "reduzir movimento" (sem scroll suave, sem autoplay)

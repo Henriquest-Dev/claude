@@ -11,11 +11,10 @@ import { splitWords } from "./lib/split";
 import { initVideos } from "./lib/media";
 import { initIntro } from "./sections/intro";
 import { initStory } from "./sections/story";
-import { initDemo } from "./sections/demo";
-import { initAds } from "./sections/ads";
-import { initProjects } from "./sections/projects";
-import { initReveals } from "./sections/reveal";
-import { initContact } from "./sections/contact";
+import { buildDemo } from "./sections/demo";
+import { buildAds } from "./sections/ads";
+import { buildProjects } from "./sections/projects";
+import { buildCrowd, initForm } from "./sections/contact";
 import { initNav } from "./sections/nav";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -23,6 +22,7 @@ gsap.registerPlugin(ScrollTrigger);
 const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 /* ---------- language first: every animation is built from the final text ---------- */
+document.documentElement.classList.add("js");
 applyTranslations();
 initLangSwitch();
 
@@ -32,6 +32,12 @@ document.querySelectorAll<HTMLElement>("[data-blob]").forEach((el) => {
 });
 document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = String(new Date().getFullYear())));
 document.querySelectorAll<HTMLElement>("[data-words]").forEach((el) => splitWords(el));
+
+/* ---------- build generated content before the stage timeline reads it ---------- */
+buildDemo();
+buildAds();
+buildProjects();
+buildCrowd();
 
 /* ---------- smooth scroll (Lenis) wired into GSAP's ticker ---------- */
 let lenis: Lenis | null = null;
@@ -43,22 +49,26 @@ if (!reduced) {
 }
 gsap.ticker.add((_time, deltaMs) => tickBlobs(deltaMs / 1000));
 
-/* ---------- sections (order matters: pins are created top → bottom) ---------- */
+/* ---------- the intro, then ONE pinned stage for everything else ---------- */
 const introBlob = initIntro(reduced);
 const story = initStory();
-initDemo();
-initAds();
-initProjects();
-initReveals(reduced);
-initContact();
 initVideos(reduced);
+initForm(lenis);
 
 followPointer(document, (x, y) => {
   introBlob.setLook(x, y);
   story.blob.setLook(x, y);
 });
 
-initNav(lenis, { top: () => 0 });
+const go = (label: string) => () => story.scrollTo(label);
+initNav(lenis, {
+  top: () => 0,
+  services: go("services"),
+  demo: go("demo"),
+  projects: go("projects"),
+  about: go("about"),
+  contact: go("contact"),
+});
 
 /* layout depends on the web font; then restore the position kept by the PT/EN switch */
 const saved = takeSavedScroll();
